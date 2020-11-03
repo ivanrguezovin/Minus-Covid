@@ -16,15 +16,15 @@ import es.uniovi.eii.minus_covid.R;
 
 public class SettingsFragment extends Fragment {
 
-    private SearchViewModel searchViewModel;
+    private SettingsViewModel settingsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        searchViewModel =
-                ViewModelProviders.of(this).get(SearchViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
+        settingsViewModel =
+                ViewModelProviders.of(this).get(SettingsViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_settings, container, false);
         final TextView textView = root.findViewById(R.id.text_gallery);
-        searchViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        settingsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

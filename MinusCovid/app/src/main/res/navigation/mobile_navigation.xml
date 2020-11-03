@@ -9,17 +9,11 @@
         android:id="@+id/nav_map"
         android:name="es.uniovi.eii.minus_covid.ui.mapa.MapFragment"
         android:label="@string/menu_mapa"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_map" />
 
     <fragment
         android:id="@+id/nav_ajustes"
         android:name="es.uniovi.eii.minus_covid.ui.ajustes.SettingsFragment"
         android:label="@string/menu_ajustes"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_salir"
-        android:name="es.uniovi.eii.minus_covid.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_salir"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_settings" />
 </navigation>
