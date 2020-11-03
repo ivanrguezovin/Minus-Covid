@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_map">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="es.uniovi.eii.minus_covid.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:id="@+id/nav_map"
+        android:name="es.uniovi.eii.minus_covid.ui.mapa.MapFragment"
+        android:label="@string/menu_mapa"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="es.uniovi.eii.minus_covid.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:id="@+id/nav_ajustes"
+        android:name="es.uniovi.eii.minus_covid.ui.ajustes.SettingsFragment"
+        android:label="@string/menu_ajustes"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_salir"
         android:name="es.uniovi.eii.minus_covid.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_salir"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>
