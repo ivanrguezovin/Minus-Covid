@@ -19,5 +19,6 @@
     <fragment
         android:id="@+id/nav_salir"
         android:name="es.uniovi.eii.minus_covid.ui.salir.ExitFragment"
-        android:label="@string/menu_salir" />
+        android:label="@string/menu_mapa"
+        tools:layout="@layout/fragment_map" />
 </navigation>
