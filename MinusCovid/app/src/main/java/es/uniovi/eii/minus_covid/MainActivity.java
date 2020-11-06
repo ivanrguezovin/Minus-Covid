@@ -44,11 +44,7 @@ public class MainActivity extends AppCompatActivity {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-                try {
-                    ApiConection.ApiCall(getApplicationContext());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                ApiConection.ApiCall();
             }
         });
 

@@ -10,7 +10,7 @@ import org.json.*;
 
 public class ApiConection {
 
-	public static void ApiCall(Context context) {
+	public static void ApiCall() {
 		try {
 				URL url = new URL(
 						"https://api.covid19tracking.narrativa.com/api/country/spain/region/Asturias?date_from=2020-11-05&date_to=2020-11-06");
