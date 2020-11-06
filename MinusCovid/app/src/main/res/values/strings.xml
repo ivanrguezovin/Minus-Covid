@@ -13,4 +13,15 @@
 
     <string name="buscar">Buscar</string>
     <string name="selectCommunity">Seleccione una comunidad autónoma</string>
+
+    <string name="totalCasos">Casos</string>
+    <string name="totalCurados">Casos curados</string>
+    <string name="totalInfectados">Infectados</string>
+    <string name="totalFallecidos">Fallecidos</string>
+    <string name="totalEnPlanta">Casos en planta</string>
+    <string name="nuevosCasos">Nuevos casos</string>
+    <string name="nuevosCurados">Nuevos casos curados</string>
+    <string name="nuevosFallecidos">Nuevos fallecidos</string>
+    <string name="nuevosCasosEnPlanta">Nuevos casos en planta</string>
+    <string name="nuevosCasosEnUCI">Nuevos casos en UCI</string>
 </resources>
