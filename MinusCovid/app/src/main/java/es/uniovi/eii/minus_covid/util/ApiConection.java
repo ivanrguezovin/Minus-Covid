@@ -10,10 +10,10 @@ import org.json.*;
 
 public class ApiConection {
 
-	public static void ApiCall() {
+	public static void ApiCall(String idComunidad) {
 		try {
 				URL url = new URL(
-						"https://api.covid19tracking.narrativa.com/api/country/spain/region/Asturias?date_from=2020-11-05&date_to=2020-11-06");
+						"https://api.covid19tracking.narrativa.com/api/country/spain/region/" + idComunidad + "?date_from=2020-11-05&date_to=2020-11-06");
 
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 				conn.setRequestMethod("GET");
@@ -66,4 +66,7 @@ public class ApiConection {
 
 	}
 
+	public static void ApiCall() {
+		ApiCall("Asturias");
+	}
 }

@@ -40,14 +40,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-                ApiConection.ApiCall();
-            }
-        });
-
     }
 
     @Override
@@ -84,5 +76,14 @@ public class MainActivity extends AppCompatActivity {
                 .setMessage("¿Deseas salir de la aplicación?") // El mensaje
                 .create();// No olvides llamar a Create, ¡pues eso crea el AlertDialog
         dialogo.show();
+    }
+
+    public void callApi(){ //Mover este metodo a donde se llame a la api para obtener los datos
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                ApiConection.ApiCall();
+            }
+        });
     }
 }
