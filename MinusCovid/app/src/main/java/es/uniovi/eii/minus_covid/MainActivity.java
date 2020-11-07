@@ -95,7 +95,6 @@ public class MainActivity extends AppCompatActivity{
                     return true;
                 }
         );
-        callApi();
     }
 
     private boolean hayInternet() {
@@ -128,14 +127,5 @@ public class MainActivity extends AppCompatActivity{
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
-    }
-
-    public void callApi(){ //Mover este metodo a donde se llame a la api para obtener los datos
-        try{
-            JSONObject obj = new ApiConection().execute("Asturias").get();
-            ComunidadDto dto = Parser.parse(obj);
-        }catch(InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
     }
 }
