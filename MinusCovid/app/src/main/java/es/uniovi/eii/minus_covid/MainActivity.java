@@ -18,6 +18,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import org.json.JSONObject;
 
+import java.util.concurrent.ExecutionException;
+
 import es.uniovi.eii.minus_covid.util.ApiConection;
 import es.uniovi.eii.minus_covid.util.ComunidadDto;
 import es.uniovi.eii.minus_covid.util.Parser;
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        callApi();
     }
 
     @Override
@@ -83,12 +86,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void callApi(){ //Mover este metodo a donde se llame a la api para obtener los datos
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-               JSONObject obj = ApiConection.ApiCall();
-                ComunidadDto dto = Parser.parse(obj);
-            }
-        });
+        try{
+            JSONObject obj = new ApiConection().execute("Asturias").get();
+            System.out.println(obj.toString());
+        }catch(InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 }

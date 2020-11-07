@@ -1,6 +1,7 @@
 package es.uniovi.eii.minus_covid.util;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.widget.Toast;
 
 import java.net.HttpURLConnection;
@@ -8,7 +9,7 @@ import java.net.URL;
 import java.util.Scanner;
 import org.json.*;
 
-public class ApiConection {
+public class ApiConection extends AsyncTask<String, Integer, JSONObject> {
 
 	public static JSONObject ApiCall(String idComunidad) {
 		JSONObject obj = null;
@@ -44,7 +45,6 @@ public class ApiConection {
 
 					// Get the required object from the above created object
 					obj = (JSONObject) data_obj.get("dates");
-					System.out.println(obj.toString());
 					/*
 					 * // Get the required data using its key
 					 * System.out.println(obj.get("TotalRecovered"));
@@ -60,9 +60,6 @@ public class ApiConection {
 					 * break; } }
 					 */
 				}
-
-
-
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -72,5 +69,10 @@ public class ApiConection {
 
 	public static JSONObject ApiCall() {
 		 return ApiCall("Asturias");
+	}
+
+	@Override
+	protected JSONObject doInBackground(String... strings) {
+		return ApiCall(strings[0]);
 	}
 }
