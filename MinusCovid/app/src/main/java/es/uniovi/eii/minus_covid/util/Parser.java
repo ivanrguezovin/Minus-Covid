@@ -15,6 +15,6 @@ public class Parser {
         }catch(JSONException e){
             e.printStackTrace();
         }
-        return null;
+        return dto;
     }
 }
