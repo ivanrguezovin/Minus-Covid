@@ -5,7 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFFFFF">
     <TextView
         android:id="@+id/ubicacion"
         android:layout_width="176dp"
@@ -19,19 +23,19 @@
         app:layout_constraintVertical_bias="0.042"
         tools:text="Comunidad Autónoma" />
 
-    <TextView
-        android:id="@+id/totales"
-        android:layout_width="57dp"
-        android:layout_height="24dp"
-        android:text="Totales"
-        app:layout_constraintBottom_toTopOf="@+id/totalCasos_"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.039"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ubicacion"
-        app:layout_constraintVertical_bias="0.608" />
+        <TextView
+            android:id="@+id/totales"
+            android:layout_width="57dp"
+            android:layout_height="24dp"
+            android:text="Totales"
+            app:layout_constraintBottom_toTopOf="@+id/totalCasos_"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.039"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ubicacion"
+            app:layout_constraintVertical_bias="0.608" />
 
-    <TextView
+        <TextView
         android:id="@+id/totalCurados"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -282,5 +286,5 @@
         app:layout_constraintStart_toEndOf="@+id/totalEnUCI_"
         app:layout_constraintTop_toBottomOf="@+id/totalCurados"
         app:layout_constraintVertical_bias="0.033" />
-
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
