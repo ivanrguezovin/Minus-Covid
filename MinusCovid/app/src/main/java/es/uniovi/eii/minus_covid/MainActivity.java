@@ -5,9 +5,11 @@ import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -24,7 +26,7 @@ import es.uniovi.eii.minus_covid.util.ApiConection;
 import es.uniovi.eii.minus_covid.util.ComunidadDto;
 import es.uniovi.eii.minus_covid.util.Parser;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -47,6 +49,35 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         callApi();
+
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.nav_salir) {
+            AlertDialog dialogo = new AlertDialog
+                    .Builder(this) // NombreDeTuActividad.this, o getActivity() si es dentro de un fragmento
+                    .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Hicieron click en el botón positivo, así que la acción está confirmada
+                            System.exit(0);
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Hicieron click en el botón negativo, no confirmaron
+                            // Simplemente descartamos el diálogo
+                            dialog.dismiss();
+                        }
+                    })
+                    .setMessage("¿Deseas salir de la aplicación?") // El mensaje
+                    .create();// No olvides llamar a Create, ¡pues eso crea el AlertDialog!
+            dialogo.show();
+        }
+        return false;
     }
 
     @Override
