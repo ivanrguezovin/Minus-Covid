@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     public void callApi(){ //Mover este metodo a donde se llame a la api para obtener los datos
         try{
             JSONObject obj = new ApiConection().execute("Asturias").get();
-            System.out.println(obj.toString());
+            ComunidadDto dto = Parser.parse(obj);
         }catch(InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
