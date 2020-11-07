@@ -2,6 +2,7 @@ package es.uniovi.eii.minus_covid;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 
@@ -14,6 +15,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import es.uniovi.eii.minus_covid.util.ApiConection;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -73,5 +76,14 @@ public class MainActivity extends AppCompatActivity {
                 .setMessage("¿Deseas salir de la aplicación?") // El mensaje
                 .create();// No olvides llamar a Create, ¡pues eso crea el AlertDialog
         dialogo.show();
+    }
+
+    public void callApi(){ //Mover este metodo a donde se llame a la api para obtener los datos
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                ApiConection.ApiCall();
+            }
+        });
     }
 }
