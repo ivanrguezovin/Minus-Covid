@@ -20,16 +20,16 @@
         tools:text="Comunidad Autónoma" />
 
     <TextView
-        android:id="@+id/totalCasos_"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/totalCasos"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/totales"
+        android:layout_width="57dp"
+        android:layout_height="24dp"
+        android:text="Totales"
+        app:layout_constraintBottom_toTopOf="@+id/totalCasos_"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.039"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.179" />
+        app:layout_constraintTop_toBottomOf="@+id/ubicacion"
+        app:layout_constraintVertical_bias="0.608" />
 
     <TextView
         android:id="@+id/totalCurados"
@@ -41,7 +41,91 @@
         app:layout_constraintHorizontal_bias="0.143"
         app:layout_constraintStart_toEndOf="@+id/totalCurados_"
         app:layout_constraintTop_toBottomOf="@+id/totalCasos"
-        app:layout_constraintVertical_bias="0.026" />
+        app:layout_constraintVertical_bias="0.027" />
+
+    <TextView
+        android:id="@+id/fuente_"
+        android:layout_width="52dp"
+        android:layout_height="27dp"
+        android:text="Fuente"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.642" />
+
+    <TextView
+        android:id="@+id/totalInfectados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="n"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.446"
+        app:layout_constraintStart_toEndOf="@+id/totalInfectados_"
+        app:layout_constraintTop_toBottomOf="@+id/totalFallecidos"
+        app:layout_constraintVertical_bias="0.027" />
+
+    <TextView
+        android:id="@+id/nuevosEnPlanta_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/totalEnPlanta"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nuevosEnPlanta"
+        app:layout_constraintHorizontal_bias="0.701"
+        app:layout_constraintStart_toEndOf="@+id/nuevosFallecidos"
+        app:layout_constraintTop_toBottomOf="@+id/nuevosCurados_"
+        app:layout_constraintVertical_bias="0.053" />
+
+    <TextView
+        android:id="@+id/totalFallecidos_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/totalFallecidos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.294"
+        app:layout_constraintStart_toEndOf="@+id/totalCasos"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.205" />
+
+    <TextView
+        android:id="@+id/totalEnPlanta_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/totalEnPlanta"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalCurados_"
+        app:layout_constraintVertical_bias="0.031" />
+
+    <TextView
+        android:id="@+id/nuevosEnPlanta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="n"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.836"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nuevosCurados_"
+        app:layout_constraintVertical_bias="0.056" />
+
+    <TextView
+        android:id="@+id/nuevosFallecidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="n"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.223"
+        app:layout_constraintStart_toEndOf="@+id/nuevosFallecidos_"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.502" />
 
     <TextView
         android:id="@+id/totalCurados_"
@@ -50,10 +134,70 @@
         android:text="@string/totalCurados"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalCasos_"
-        app:layout_constraintVertical_bias="0.026" />
+        app:layout_constraintVertical_bias="0.027" />
+
+    <TextView
+        android:id="@+id/nuevosCurados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="n"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.836"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
+
+    <TextView
+        android:id="@+id/fuente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cibeles"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fuente_"
+        app:layout_constraintVertical_bias="0.068" />
+
+    <TextView
+        android:id="@+id/nuevosEnUCI_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nuevosCasosEnUCI"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nuevosFallecidos_"
+        app:layout_constraintVertical_bias="0.07" />
+
+    <TextView
+        android:id="@+id/nuevosFallecidos_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/totalFallecidos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nuevosCasos_"
+        app:layout_constraintVertical_bias="0.045" />
+
+    <TextView
+        android:id="@+id/totalCasos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="n"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.277"
+        app:layout_constraintStart_toEndOf="@+id/totalCasos_"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.205" />
 
     <TextView
         android:id="@+id/totalInfectados_"
@@ -63,58 +207,22 @@
         android:text="@string/totalInfectados"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.297"
+        app:layout_constraintHorizontal_bias="0.295"
         app:layout_constraintStart_toEndOf="@+id/totalCurados"
         app:layout_constraintTop_toBottomOf="@+id/totalFallecidos_"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/totalFallecidos"
+        android:id="@+id/nuevosCasos_"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="n"
+        android:text="@string/nuevosCasos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toEndOf="@+id/totalFallecidos_"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.179" />
-
-    <TextView
-        android:id="@+id/totalInfectados"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="n"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
-        app:layout_constraintStart_toEndOf="@+id/totalInfectados_"
-        app:layout_constraintTop_toBottomOf="@+id/totalFallecidos"
-        app:layout_constraintVertical_bias="0.026" />
-
-    <TextView
-        android:id="@+id/totalFallecidos_"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/totalFallecidos"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.295"
-        app:layout_constraintStart_toEndOf="@+id/totalCasos"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.179" />
-
-    <TextView
-        android:id="@+id/totalEnPlanta_"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/totalEnPlanta"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totalCurados_"
-        app:layout_constraintVertical_bias="0.03" />
+        app:layout_constraintTop_toBottomOf="@+id/diarios"
+        app:layout_constraintVertical_bias="0.044" />
 
     <TextView
         android:id="@+id/totalEnPlanta"
@@ -126,30 +234,78 @@
         app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toEndOf="@+id/totalEnPlanta_"
         app:layout_constraintTop_toBottomOf="@+id/totalCurados"
-        app:layout_constraintVertical_bias="0.03" />
+        app:layout_constraintVertical_bias="0.031" />
 
     <TextView
-        android:id="@+id/totalCasos"
+        android:id="@+id/totalCasos_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/totalCasos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.205" />
+
+    <TextView
+        android:id="@+id/totalFallecidos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="n"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.276"
-        app:layout_constraintStart_toEndOf="@+id/totalCasos_"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toEndOf="@+id/totalFallecidos_"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.179" />
+        app:layout_constraintVertical_bias="0.205" />
 
     <TextView
-        android:id="@+id/totales"
-        android:layout_width="57dp"
-        android:layout_height="24dp"
-        android:text="Totales"
-        app:layout_constraintBottom_toTopOf="@+id/totalCasos_"
+        android:id="@+id/nuevosCasos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="n"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.038"
+        app:layout_constraintHorizontal_bias="0.158"
+        app:layout_constraintStart_toEndOf="@+id/nuevosCasos_"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
+
+    <TextView
+        android:id="@+id/nuevosCurados_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/totalCurados"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nuevosCurados"
+        app:layout_constraintHorizontal_bias="0.642"
+        app:layout_constraintStart_toEndOf="@+id/nuevosCasos"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.449" />
+
+    <TextView
+        android:id="@+id/nuevosEnUCI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="n"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toEndOf="@+id/nuevosEnUCI_"
+        app:layout_constraintTop_toBottomOf="@+id/nuevosFallecidos"
+        app:layout_constraintVertical_bias="0.056" />
+
+    <TextView
+        android:id="@+id/diarios"
+        android:layout_width="48dp"
+        android:layout_height="24dp"
+        android:text="Diarios"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ubicacion"
-        app:layout_constraintVertical_bias="0.371" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.396" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

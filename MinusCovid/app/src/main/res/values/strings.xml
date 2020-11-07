@@ -23,5 +23,5 @@
     <string name="nuevosCurados">Nuevos casos curados</string>
     <string name="nuevosFallecidos">Nuevos fallecidos</string>
     <string name="nuevosCasosEnPlanta">Nuevos casos en planta</string>
-    <string name="nuevosCasosEnUCI">Nuevos casos en UCI</string>
+    <string name="nuevosCasosEnUCI">Casos en UCI</string>
 </resources>
