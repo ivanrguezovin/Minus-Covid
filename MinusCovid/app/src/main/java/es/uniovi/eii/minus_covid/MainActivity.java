@@ -16,7 +16,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import org.json.JSONObject;
+
 import es.uniovi.eii.minus_covid.util.ApiConection;
+import es.uniovi.eii.minus_covid.util.ComunidadDto;
+import es.uniovi.eii.minus_covid.util.Parser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -82,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-                ApiConection.ApiCall();
+               JSONObject obj = ApiConection.ApiCall();
+                ComunidadDto dto = Parser.parse(obj);
             }
         });
     }

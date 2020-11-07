@@ -10,7 +10,8 @@ import org.json.*;
 
 public class ApiConection {
 
-	public static void ApiCall(String idComunidad) {
+	public static JSONObject ApiCall(String idComunidad) {
+		JSONObject obj = null;
 		try {
 				URL url = new URL(
 						"https://api.covid19tracking.narrativa.com/api/country/spain/region/" + idComunidad + "?date_from=2020-11-05&date_to=2020-11-06");
@@ -42,7 +43,7 @@ public class ApiConection {
 					JSONObject data_obj = (JSONObject) new JSONTokener(inline).nextValue();
 
 					// Get the required object from the above created object
-					JSONObject obj = (JSONObject) data_obj.get("dates");
+					obj = (JSONObject) data_obj.get("dates");
 					System.out.println(obj.toString());
 					/*
 					 * // Get the required data using its key
@@ -60,13 +61,16 @@ public class ApiConection {
 					 */
 				}
 
+
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
+		return obj;
 	}
 
-	public static void ApiCall() {
-		ApiCall("Asturias");
+	public static JSONObject ApiCall() {
+		 return ApiCall("Asturias");
 	}
 }
