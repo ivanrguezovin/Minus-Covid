@@ -7,8 +7,6 @@ public class Parser {
     public static ComunidadDto parse(JSONObject data_obj) {
         ComunidadDto dto = new ComunidadDto();
         try {
-            data_obj = (JSONObject) data_obj.get("dates");
-            data_obj = (JSONObject) data_obj.get("2020-11-06");
             data_obj = (JSONObject) data_obj.get("countries");
             data_obj = (JSONObject) data_obj.get("Spain");
             JSONArray jsonarr = data_obj.getJSONArray("regions");
@@ -28,6 +26,7 @@ public class Parser {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        System.out.println(dto.toString());
         return dto;
     }
 }
