@@ -26,7 +26,6 @@ public class Parser {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        System.out.println(dto.toString());
         return dto;
     }
 }
