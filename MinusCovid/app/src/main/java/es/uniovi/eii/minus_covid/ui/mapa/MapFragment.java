@@ -32,6 +32,11 @@ public class MapFragment extends Fragment {
 
     private HashMap<String,String> comunidades = new HashMap<>();
 
+
+    TextView selectCommunity;
+    Spinner spinnerCommunity;
+    Button buttonSearch;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         mapViewModel =
@@ -40,9 +45,12 @@ public class MapFragment extends Fragment {
 
         generarHash();
 
-        final TextView selectCommunity = root.findViewById(R.id.text_home);
-        final Spinner spinnerCommunity = root.findViewById(R.id.spinnerCommunity);
-        final Button buttonSearch = root.findViewById(R.id.bt_search);
+        selectCommunity = root.findViewById(R.id.text_home);
+        spinnerCommunity = root.findViewById(R.id.spinnerCommunity);
+        buttonSearch = root.findViewById(R.id.bt_search);
+
+        System.out.println(spinnerCommunity.getSelectedItem().toString());
+
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,16 +88,17 @@ public class MapFragment extends Fragment {
                 .replace(R.id.container_main,fr)
                 .addToBackStack(null)
                 .commit();
-        ComunidadDto dto = callApi();
+        ComunidadDto dto = callApi(spinnerCommunity.getSelectedItem().toString());
     }
 
-    public ComunidadDto callApi(){ //Mover este metodo a donde se llame a la api para obtener los datos
+    public ComunidadDto callApi(String ubicacion){ //Mover este metodo a donde se llame a la api para obtener los datos
         try{
-            JSONObject obj = new ApiConection().execute("Asturias").get();
+            JSONObject obj = new ApiConection().execute(comunidades.get(ubicacion)).get();
             ComunidadDto dto = Parser.parse(obj);
             return dto;
         }catch(InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
+        return null;
     }
 }
