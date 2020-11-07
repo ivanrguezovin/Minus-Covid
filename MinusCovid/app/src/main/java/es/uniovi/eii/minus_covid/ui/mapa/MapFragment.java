@@ -13,14 +13,19 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import es.uniovi.eii.minus_covid.R;
 import es.uniovi.eii.minus_covid.ui.mapa.datos.DataFragment;
 
 public class MapFragment extends Fragment {
 
+    private MapViewModel mapViewModel;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        mapViewModel =
+                ViewModelProviders.of(this).get(MapViewModel.class);
         View root = inflater.inflate(R.layout.fragment_map, container, false);
         final TextView selectCommunity = root.findViewById(R.id.text_home);
         final Spinner spinnerCommunity = root.findViewById(R.id.spinnerCommunity);
@@ -37,7 +42,7 @@ public class MapFragment extends Fragment {
     private void searchLocationData(){
         DataFragment fr=new DataFragment();
         getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.drawer_layout,fr)
+                .replace(R.id.container_main,fr)
                 .addToBackStack(null)
                 .commit();
 
