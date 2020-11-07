@@ -37,6 +37,12 @@ public class MapFragment extends Fragment {
     Spinner spinnerCommunity;
     Button buttonSearch;
 
+    @Override
+    public void onCreate(Bundle savedInstance) {
+        super.onCreate(savedInstance);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         mapViewModel =

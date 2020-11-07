@@ -32,7 +32,12 @@ public class DataFragment extends Fragment {
     TextView fuente;
     TextView ubicacion;
 
+    @Override
+    public void onCreate(Bundle savedInstance) {
+        super.onCreate(savedInstance);
+    }
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         dataViewModel =

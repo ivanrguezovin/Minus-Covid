@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity{
         navigationView.setNavigationItemSelectedListener(
                 menuItem -> {
                     FragmentManager fragmentManager = getSupportFragmentManager();
-                    fragmentManager.popBackStack();
+                    //fragmentManager.popBackStack();
                     int id = menuItem.getItemId();
                     if (id == R.id.nav_salir) {
                         AlertDialog dialogo = new AlertDialog
@@ -117,8 +117,6 @@ public class MainActivity extends AppCompatActivity{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 

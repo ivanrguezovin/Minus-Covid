@@ -19,6 +19,12 @@ public class SettingsFragment extends Fragment {
 
     private SettingsViewModel settingsViewModel;
 
+    @Override
+    public void onCreate(Bundle savedInstance) {
+        super.onCreate(savedInstance);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         settingsViewModel =
