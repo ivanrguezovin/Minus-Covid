@@ -1,78 +1,88 @@
 package es.uniovi.eii.minus_covid.util;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
+
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Scanner;
-import org.json.*;
 
 public class ApiConection extends AsyncTask<String, Integer, JSONObject> {
 
-	public static JSONObject ApiCall(String idComunidad) {
-		JSONObject obj = null;
-		try {
-				URL url = new URL(
-						"https://api.covid19tracking.narrativa.com/api/country/spain/region/" + idComunidad + "?date_from=2020-11-05&date_to=2020-11-06");
+    public static JSONObject ApiCall(String idComunidad) {
+        JSONObject obj = null;
+        try {
+			Date date = new Date();
 
-				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-				conn.setRequestMethod("GET");
-				conn.connect();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String formatedDate = sdf.format(date);
+			String stringUrl = "https://api.covid19tracking.narrativa.com/api/" + formatedDate +"/country/spain/region/" + idComunidad;
 
-				// Getting the response code
-				int responsecode = conn.getResponseCode();
+			System.out.println(stringUrl);
 
-				if (responsecode != 200) {
-					throw new RuntimeException("HttpResponseCode: " + responsecode);
-				} else {
+            URL url = new URL(stringUrl);
 
-					String inline = "";
-					Scanner scanner = new Scanner(url.openStream());
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.connect();
 
-					// Write all the JSON data into a string using a scanner
-					while (scanner.hasNext()) {
-						inline += scanner.nextLine();
-					}
+            // Getting the response code
+            int responsecode = conn.getResponseCode();
 
-					// Close the scanner
-					scanner.close();
+            if (responsecode != 200) {
+                throw new RuntimeException("HttpResponseCode: " + responsecode);
+            } else {
 
-					// Using the JSON simple library parse the string into a json object
+                String inline = "";
+                Scanner scanner = new Scanner(url.openStream());
 
-					JSONObject data_obj = (JSONObject) new JSONTokener(inline).nextValue();
+                // Write all the JSON data into a string using a scanner
+                while (scanner.hasNext()) {
+                    inline += scanner.nextLine();
+                }
 
-					// Get the required object from the above created object
-					obj = (JSONObject) data_obj.get("dates");
-					/*
-					 * // Get the required data using its key
-					 * System.out.println(obj.get("TotalRecovered"));
-					 *
-					 * JSONArray arr = (JSONArray) data_obj.get("Countries");
-					 *
-					 * for (int i = 0; i < arr.size(); i++) {
-					 *
-					 * JSONObject new_obj = (JSONObject) arr.get(i);
-					 *
-					 * if (new_obj.get("Slug").equals("albania")) {
-					 * System.out.println("Total Recovered: " + new_obj.get("TotalRecovered"));
-					 * break; } }
-					 */
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+                // Close the scanner
+                scanner.close();
 
-		return obj;
-	}
+                // Using the JSON simple library parse the string into a json object
 
-	public static JSONObject ApiCall() {
-		 return ApiCall("Asturias");
-	}
+                JSONObject data_obj = (JSONObject) new JSONTokener(inline).nextValue();
 
-	@Override
-	protected JSONObject doInBackground(String... strings) {
-		return ApiCall(strings[0]);
-	}
+                // Get the required object from the above created object
+                obj = (JSONObject) data_obj.get("dates");
+                /*
+                 * // Get the required data using its key
+                 * System.out.println(obj.get("TotalRecovered"));
+                 *
+                 * JSONArray arr = (JSONArray) data_obj.get("Countries");
+                 *
+                 * for (int i = 0; i < arr.size(); i++) {
+                 *
+                 * JSONObject new_obj = (JSONObject) arr.get(i);
+                 *
+                 * if (new_obj.get("Slug").equals("albania")) {
+                 * System.out.println("Total Recovered: " + new_obj.get("TotalRecovered"));
+                 * break; } }
+                 */
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return obj;
+    }
+
+    public static JSONObject ApiCall() {
+        return ApiCall("Asturias");
+    }
+
+    @Override
+    protected JSONObject doInBackground(String... strings) {
+        return ApiCall(strings[0]);
+    }
 }
