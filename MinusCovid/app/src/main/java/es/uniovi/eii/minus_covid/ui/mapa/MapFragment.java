@@ -84,11 +84,14 @@ public class MapFragment extends Fragment {
 
     private void searchLocationData(){
         DataFragment fr=new DataFragment();
+        ComunidadDto dto = callApi(spinnerCommunity.getSelectedItem().toString());
+        Bundle datosAEnviar = new Bundle();
+        datosAEnviar.putParcelable("dto", dto);
+        fr.setArguments(datosAEnviar);
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container_main,fr)
                 .addToBackStack(null)
                 .commit();
-        ComunidadDto dto = callApi(spinnerCommunity.getSelectedItem().toString());
     }
 
     public ComunidadDto callApi(String ubicacion){ //Mover este metodo a donde se llame a la api para obtener los datos

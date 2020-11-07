@@ -68,16 +68,16 @@
         app:layout_constraintVertical_bias="0.027" />
 
     <TextView
-        android:id="@+id/nuevosEnPlanta_"
+        android:id="@+id/nuevosEnUCI_"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/totalEnPlanta"
+        android:text="@string/nuevosCasosEnUCI"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/nuevosEnPlanta"
-        app:layout_constraintHorizontal_bias="0.701"
+        app:layout_constraintEnd_toStartOf="@+id/nuevosEnUCI"
+        app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintStart_toEndOf="@+id/nuevosFallecidos"
         app:layout_constraintTop_toBottomOf="@+id/nuevosCurados_"
-        app:layout_constraintVertical_bias="0.053" />
+        app:layout_constraintVertical_bias="0.056" />
 
     <TextView
         android:id="@+id/totalFallecidos_"
@@ -92,10 +92,10 @@
         app:layout_constraintVertical_bias="0.205" />
 
     <TextView
-        android:id="@+id/totalEnPlanta_"
+        android:id="@+id/totalEnUCI_"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/totalEnPlanta"
+        android:text="Casos en UCI"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.057"
@@ -104,7 +104,7 @@
         app:layout_constraintVertical_bias="0.031" />
 
     <TextView
-        android:id="@+id/nuevosEnPlanta"
+        android:id="@+id/nuevosEnUCI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="n"
@@ -164,18 +164,6 @@
         app:layout_constraintVertical_bias="0.068" />
 
     <TextView
-        android:id="@+id/nuevosEnUCI_"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nuevosCasosEnUCI"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.054"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nuevosFallecidos_"
-        app:layout_constraintVertical_bias="0.07" />
-
-    <TextView
         android:id="@+id/nuevosFallecidos_"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -223,18 +211,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/diarios"
         app:layout_constraintVertical_bias="0.044" />
-
-    <TextView
-        android:id="@+id/totalEnPlanta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="n"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
-        app:layout_constraintStart_toEndOf="@+id/totalEnPlanta_"
-        app:layout_constraintTop_toBottomOf="@+id/totalCurados"
-        app:layout_constraintVertical_bias="0.031" />
 
     <TextView
         android:id="@+id/totalCasos_"
@@ -285,18 +261,6 @@
         app:layout_constraintVertical_bias="0.449" />
 
     <TextView
-        android:id="@+id/nuevosEnUCI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="n"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.172"
-        app:layout_constraintStart_toEndOf="@+id/nuevosEnUCI_"
-        app:layout_constraintTop_toBottomOf="@+id/nuevosFallecidos"
-        app:layout_constraintVertical_bias="0.056" />
-
-    <TextView
         android:id="@+id/diarios"
         android:layout_width="48dp"
         android:layout_height="24dp"
@@ -307,5 +271,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.396" />
+
+    <TextView
+        android:id="@+id/totalEnUCI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="n"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintStart_toEndOf="@+id/totalEnUCI_"
+        app:layout_constraintTop_toBottomOf="@+id/totalCurados"
+        app:layout_constraintVertical_bias="0.033" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
