@@ -1,4 +1,4 @@
-package es.uniovi.eii.minus_covid.business.dto;
+package es.uniovi.eii.minus_covid.util;
 
 public class ComunidadDto {
 
