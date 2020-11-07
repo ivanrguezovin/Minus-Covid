@@ -56,28 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    public void optionExit(){
-        AlertDialog dialogo = new AlertDialog
-                .Builder(MainActivity.this) // NombreDeTuActividad.this, o getActivity() si es dentro de un fragmento
-                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Hicieron click en el botón positivo, así que la acción está confirmada
-                        System.exit(0);
-                    }
-                })
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .setTitle("Confirmar") // El título
-                .setMessage("¿Deseas salir de la aplicación?") // El mensaje
-                .create();// No olvides llamar a Create, ¡pues eso crea el AlertDialog
-        dialogo.show();
-    }
-
     public void callApi(){ //Mover este metodo a donde se llame a la api para obtener los datos
         AsyncTask.execute(new Runnable() {
             @Override
