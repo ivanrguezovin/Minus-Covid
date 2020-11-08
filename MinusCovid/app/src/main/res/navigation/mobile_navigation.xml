@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_map"
         android:name="es.uniovi.eii.minus_covid.ui.mapa.MapFragment"
-        android:label="@string/menu_mapa"
+        android:label="Minus-Covid"
         tools:layout="@layout/fragment_map" />
 
     <fragment
