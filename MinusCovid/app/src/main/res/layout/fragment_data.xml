@@ -24,7 +24,9 @@
                 android:layout_height="32dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="18dp"
-                android:layout_marginEnd="151dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="sans-serif-black"
+                android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -37,20 +39,21 @@
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="377dp"
             android:stretchColumns="2">
 
             <TableRow>
 
                 <TextView
                     android:id="@+id/totales"
-                    android:layout_column="1"
-                    android:layout_width="30dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="319dp"
+                    android:layout_marginEnd="50dp"
+                    android:fontFamily="sans-serif-black"
                     android:text="Totales"
+                    android:textColor="@color/design_default_color_on_secondary"
                     app:layout_constraintBottom_toTopOf="@+id/totalCasos_"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.039"
@@ -65,10 +68,9 @@
                     android:id="@+id/totalCasos_"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="37dp"
+                    android:layout_marginEnd="50dp"
                     android:text="@string/totalCasos"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="126dp"
+                    android:layout_marginEnd="50dp"
                     android:text="n"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -98,13 +100,11 @@
 
                 <TextView
                     android:id="@+id/totalCurados_"
-                    android:layout_column="1"
-
-                    android:layout_width="30dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="39dp"
+                    android:layout_marginEnd="50dp"
                     android:text="@string/totalCurados"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -118,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="13dp"
-                    android:layout_marginEnd="127dp"
+                    android:layout_marginEnd="50dp"
                     android:text="n"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -128,17 +128,15 @@
                     app:layout_constraintVertical_bias="0.027" />
             </TableRow>
 
-            <TableRow android:layout_height="42dp">
+            <TableRow>
 
                 <TextView
                     android:id="@+id/totalInfectados_"
                     android:layout_width="30dp"
-
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="35dp"
+                    android:layout_marginEnd="50dp"
                     android:text="@string/totalInfectados"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -149,11 +147,10 @@
 
                 <TextView
                     android:id="@+id/totalInfectados"
-
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="93dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="50dp"
                     android:text="n"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -167,13 +164,11 @@
 
                 <TextView
                     android:id="@+id/totalFallecidos_"
-                    android:layout_column="1"
-
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="35dp"
+                    android:layout_marginEnd="50dp"
                     android:text="@string/totalFallecidos"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -202,13 +197,11 @@
 
                 <TextView
                     android:id="@+id/totalEnUCI_"
-                    android:layout_column="1"
-
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="34dp"
+                    android:layout_marginEnd="50dp"
                     android:text="Casos en UCI"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -222,7 +215,7 @@
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="13dp"
-                    android:layout_marginEnd="129dp"
+                    android:layout_marginEnd="50dp"
                     android:text="n"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -238,13 +231,13 @@
                 <TextView
                     android:id="@+id/diarios"
                     android:layout_width="43dp"
-
                     android:layout_height="24dp"
-                    android:layout_column="1"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="30dp"
-                    android:layout_marginEnd="329dp"
+                    android:layout_marginEnd="50dp"
+                    android:fontFamily="sans-serif-black"
                     android:text="Diarios"
+                    android:textColor="@color/design_default_color_on_secondary"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.041"
@@ -257,13 +250,11 @@
 
                 <TextView
                     android:id="@+id/nuevosCurados_"
-                    android:layout_column="1"
-
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="38dp"
+                    android:layout_marginEnd="50dp"
                     android:text="@string/totalCurados"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/nuevosCurados"
@@ -274,11 +265,10 @@
 
                 <TextView
                     android:id="@+id/nuevosCasos"
-
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="58dp"
-                    android:layout_marginEnd="127dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="50dp"
                     android:text="n"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -294,13 +284,11 @@
 
                 <TextView
                     android:id="@+id/nuevosCasos_"
-                    android:layout_column="1"
-
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="42dp"
+                    android:layout_marginEnd="50dp"
                     android:text="@string/nuevosCasos"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -313,8 +301,8 @@
                     android:id="@+id/nuevosCurados"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginEnd="126dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="50dp"
                     android:text="n"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -328,13 +316,11 @@
 
                 <TextView
                     android:id="@+id/nuevosFallecidos_"
-                    android:layout_column="1"
-
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="42dp"
+                    android:layout_marginEnd="50dp"
                     android:text="@string/totalFallecidos"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -347,8 +333,8 @@
                     android:id="@+id/nuevosFallecidos"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
-                    android:layout_marginEnd="124dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="50dp"
                     android:text="n"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -361,8 +347,6 @@
 
                 <TextView
                     android:id="@+id/nuevosEnUCI_"
-                    android:layout_column="1"
-
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -382,8 +366,7 @@
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="11dp"
-                    android:layout_marginEnd="123dp"
-                    android:layout_marginBottom="329dp"
+                    android:layout_marginEnd="50dp"
                     android:text="n"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -403,11 +386,12 @@
 
             <TextView
                 android:id="@+id/fuente_"
-                android:layout_width="30dp"
+                android:layout_width="68dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginEnd="174dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="50dp"
                 android:text="Fuente:"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -418,12 +402,12 @@
 
             <TextView
                 android:id="@+id/fuente"
-                android:layout_width="30dp"
-                android:layout_height="139dp"
+                android:layout_width="199dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="9dp"
-                android:layout_marginEnd="48dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="50dp"
                 android:text="Cibeles"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
