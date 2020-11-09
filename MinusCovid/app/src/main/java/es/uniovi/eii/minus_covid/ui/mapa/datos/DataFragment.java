@@ -29,7 +29,6 @@ public class DataFragment extends Fragment {
     TextView nuevosFallecidos;
     TextView nuevosEnUCI;
 
-    TextView fuente;
     TextView ubicacion;
 
     @Override
@@ -73,15 +72,7 @@ public class DataFragment extends Fragment {
         nuevosEnUCI = root.findViewById(R.id.nuevosEnUCI);
         nuevosEnUCI.setText(Integer.toString(dto.nuevos_uci));
 
-        fuente = root.findViewById(R.id.fuente);
-        fuente.setText("Narrativa.com\n" +
-                "Ministerio de Sanidad\n" +
-                "Dipartimento della Protezione Civile de Italia\n" +
-                "Robert Koch Institute de Alemania\n" +
-                "Santé publique France\n" +
-                "Johns Hopkins University");
-
-        ubicacion = root.findViewById(R.id.ubicacion);
+        ubicacion = root.findViewById(R.id.about);
         ubicacion.setText(dto.nombre);
 
         return root;

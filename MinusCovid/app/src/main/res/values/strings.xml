@@ -9,6 +9,7 @@
 
     <string name="menu_mapa">Mapa</string>
     <string name="menu_ajustes">Ajustes</string>
+    <string name="menu_about">Sobre nosotros</string>
     <string name="menu_salir">Salir</string>
 
     <string name="buscar">Buscar</string>

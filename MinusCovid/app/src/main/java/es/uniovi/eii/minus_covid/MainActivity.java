@@ -27,6 +27,7 @@ import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 
+import es.uniovi.eii.minus_covid.ui.about.AboutFragment;
 import es.uniovi.eii.minus_covid.ui.ajustes.SettingsFragment;
 import es.uniovi.eii.minus_covid.ui.mapa.MapFragment;
 import es.uniovi.eii.minus_covid.util.ApiConection;
@@ -79,6 +80,8 @@ public class MainActivity extends AppCompatActivity{
                         dialogo.show();
                     }else if (id == R.id.nav_ajustes) {
                         fragmentManager.beginTransaction().replace(R.id.container_main, new SettingsFragment()).commit();
+                    }else if (id == R.id.nav_about) {
+                        fragmentManager.beginTransaction().replace(R.id.container_main, new AboutFragment()).commit();
                     }else if (id == R.id.nav_map) {
                         if (hayConexionAInternet()) {
                             if (hayInternet()) {
