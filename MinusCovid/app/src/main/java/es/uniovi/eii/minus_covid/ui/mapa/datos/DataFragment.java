@@ -14,8 +14,6 @@ import es.uniovi.eii.minus_covid.R;
 import es.uniovi.eii.minus_covid.util.ComunidadDto;
 
 public class DataFragment extends Fragment {
-
-    private DataViewModel dataViewModel;
     private ComunidadDto dto;
 
     TextView totalCasos;
@@ -39,8 +37,6 @@ public class DataFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dataViewModel =
-                ViewModelProviders.of(this).get(DataViewModel.class);
         View root = inflater.inflate(R.layout.fragment_data, container, false);
         Bundle datosRecuperados = getArguments();
         dto = datosRecuperados.getParcelable("dto");

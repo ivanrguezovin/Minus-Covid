@@ -28,8 +28,6 @@ import es.uniovi.eii.minus_covid.util.Parser;
 
 public class MapFragment extends Fragment {
 
-    private MapViewModel mapViewModel;
-
     private HashMap<String,String> comunidades = new HashMap<>();
 
 
@@ -45,8 +43,6 @@ public class MapFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        mapViewModel =
-                ViewModelProviders.of(this).get(MapViewModel.class);
         View root = inflater.inflate(R.layout.fragment_map, container, false);
 
         generarHash();
