@@ -75,7 +75,15 @@ public class MainActivity extends AppCompatActivity{
                     }else if (id == R.id.nav_about) {
                         fragmentManager.beginTransaction().replace(R.id.container_main, new AboutFragment()).commit();
                     }else if (id == R.id.nav_general) {
-                        fragmentManager.beginTransaction().replace(R.id.container_main, new GeneralFragment()).commit();
+                        if (hayConexionAInternet()) {
+                            if (hayInternet()) {
+                                fragmentManager.beginTransaction().replace(R.id.container_main, new GeneralFragment()).commit();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "No existe conexión a internet.", Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            Toast.makeText(getApplicationContext(), "No es posible conectarse a internet.", Toast.LENGTH_LONG).show();
+                        }
                     }else if (id == R.id.nav_map) {
                         if (hayConexionAInternet()) {
                             if (hayInternet()) {
@@ -92,6 +100,9 @@ public class MainActivity extends AppCompatActivity{
                     return true;
                 }
         );
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.container_main, new GeneralFragment()).commit();
+        navigationView.setCheckedItem(R.id.nav_general);
     }
 
     private boolean hayInternet() {
