@@ -6,6 +6,7 @@ import android.os.Parcelable;
 public class ComunidadDto implements Parcelable {
 
     public String nombre;
+    public String id;
 
     //totales
     public int total_casos_acumulado; //today_confirmed

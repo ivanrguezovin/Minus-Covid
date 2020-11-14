@@ -14,14 +14,14 @@ import java.util.Scanner;
 
 public class ApiConection extends AsyncTask<String, Integer, JSONObject> {
 
-    public static JSONObject ApiCall(String idComunidad) {
+    public static JSONObject ApiCall() {
         JSONObject obj = null;
         try {
 			Date date = new Date();
 
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			String formatedDate = sdf.format(date);
-			String stringUrl = "https://api.covid19tracking.narrativa.com/api/" + formatedDate +"/country/spain/region/" + idComunidad;
+			String stringUrl = "https://api.covid19tracking.narrativa.com/api/" + formatedDate +"/country/spain";
 
 			System.out.println(stringUrl);
 
@@ -78,12 +78,8 @@ public class ApiConection extends AsyncTask<String, Integer, JSONObject> {
         return obj;
     }
 
-    public static JSONObject ApiCall() {
-        return ApiCall("Asturias");
-    }
-
     @Override
     protected JSONObject doInBackground(String... strings) {
-        return ApiCall(strings[0]);
+        return ApiCall();
     }
 }

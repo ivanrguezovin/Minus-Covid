@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import es.uniovi.eii.minus_covid.R;
@@ -84,11 +85,18 @@ public class MapFragment extends Fragment {
         comunidades.put("Región de Murcia","murcia");
     }
 
+
     private void searchLocationData(){
         DataFragment fr=new DataFragment();
-        ComunidadDto dto = callApi(spinnerCommunity.getSelectedItem().toString());
+        List<ComunidadDto> listDto = callApi();
         Bundle datosAEnviar = new Bundle();
-        datosAEnviar.putParcelable("dto", dto);
+
+        for(ComunidadDto dto : listDto){
+            if(dto.id == comunidades.get(spinnerCommunity.getSelectedItem().toString()))
+                datosAEnviar.putParcelable("dto", dto);
+        }
+
+
         fr.setArguments(datosAEnviar);
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container_main,fr)
@@ -96,10 +104,10 @@ public class MapFragment extends Fragment {
                 .commit();
     }
 
-    public ComunidadDto callApi(String ubicacion){ //Mover este metodo a donde se llame a la api para obtener los datos
+    public List<ComunidadDto> callApi(){ //Mover este metodo a donde se llame a la api para obtener los datos
         try{
-            JSONObject obj = new ApiConection().execute(comunidades.get(ubicacion)).get();
-            ComunidadDto dto = Parser.parse(obj);
+            JSONObject obj = new ApiConection().execute().get();
+            List<ComunidadDto> dto = Parser.parse(obj);
             return dto;
         }catch(InterruptedException | ExecutionException e) {
             e.printStackTrace();
