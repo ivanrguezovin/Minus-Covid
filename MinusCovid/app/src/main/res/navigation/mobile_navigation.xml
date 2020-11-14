@@ -8,17 +8,18 @@
     <fragment
         android:id="@+id/nav_map"
         android:name="es.uniovi.eii.minus_covid.ui.mapa.MapFragment"
-        android:label="@string/menu_mapa"
+        android:label="Minus-Covid"
         tools:layout="@layout/fragment_map" />
-
     <fragment
         android:id="@+id/nav_ajustes"
         android:name="es.uniovi.eii.minus_covid.ui.ajustes.SettingsFragment"
         android:label="@string/menu_ajustes"
         tools:layout="@layout/fragment_settings" />
     <fragment
-        android:id="@+id/nav_salir"
-        android:name="es.uniovi.eii.minus_covid.ui.salir.ExitFragment"
-        android:label="@string/menu_mapa"
-        tools:layout="@layout/fragment_map" />
+        android:id="@+id/nav_about"
+        android:name="es.uniovi.eii.minus_covid.ui.about.AboutFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/nav_salir" />
 </navigation>

@@ -6,46 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".ui.mapa.MapFragment">
 
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="220dp"
-        android:layout_height="79dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="sans-serif"
-        android:text="@string/selectCommunity"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.012" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFFFFF">
 
-    <Spinner
-        android:id="@+id/spinnerCommunity"
-        android:layout_width="352dp"
-        android:layout_height="50dp"
-        android:entries="@array/comunidades"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_home"
-        app:layout_constraintVertical_bias="0.018" />
+        <TextView
+            android:id="@+id/text_home"
+            android:layout_width="213dp"
+            android:layout_height="79dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/selectCommunity"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.147"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.012" />
 
-    <Button
-        android:id="@+id/bt_search"
-        android:layout_width="94dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="17dp"
-        android:text="@string/buscar"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCommunity"
-        app:layout_constraintVertical_bias="0.0" />
+        <Spinner
+            android:id="@+id/spinnerCommunity"
+            android:layout_width="352dp"
+            android:layout_height="50dp"
+            android:dropDownWidth="wrap_content"
+            android:entries="@array/comunidades"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.457"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_home"
+            app:layout_constraintVertical_bias="0.018" />
+
+        <Button
+            android:id="@+id/bt_search"
+            android:layout_width="94dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="17dp"
+            android:text="@string/buscar"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.085"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerCommunity"
+            app:layout_constraintVertical_bias="0.0" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
