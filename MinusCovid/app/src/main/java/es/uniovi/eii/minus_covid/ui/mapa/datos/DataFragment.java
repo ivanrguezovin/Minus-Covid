@@ -10,7 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -38,6 +42,9 @@ public class DataFragment extends Fragment {
 
     LineChart lineChart;
     LineDataSet lineDataSet;
+
+    BarChart barChart;
+    BarDataSet barDataSet;
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -89,6 +96,7 @@ public class DataFragment extends Fragment {
     private void generarGrafico(View root){
         // Enlazamos al XML
         lineChart = root.findViewById(R.id.lineChart);
+        barChart = root.findViewById(R.id.barChart);
 
         // Creamos un set de datos
         ArrayList<Entry> lineEntries = new ArrayList<Entry>();
@@ -97,12 +105,24 @@ public class DataFragment extends Fragment {
             lineEntries.add(new Entry((float) i,(float)y));
         }
 
+        // Creamos un set de datos
+        ArrayList<BarEntry> barEntries = new ArrayList<BarEntry>();
+        for (int i = 0; i<11; i++){
+            float y = (int) (Math.random() * 8) + 1;
+            barEntries.add(new BarEntry((float) i,(float)y));
+        }
+
         // Unimos los datos al data set
         lineDataSet = new LineDataSet(lineEntries, "Grafico de prueba");
+        barDataSet = new BarDataSet(barEntries, "Barras prueba");
 
         // Asociamos al gráfico
         LineData lineData = new LineData();
         lineData.addDataSet(lineDataSet);
         lineChart.setData(lineData);
+
+        BarData barData = new BarData();
+        barData.addDataSet(barDataSet);
+        barChart.setData(barData);
     }
 }
