@@ -10,6 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+
+import java.util.ArrayList;
+
 import es.uniovi.eii.minus_covid.R;
 import es.uniovi.eii.minus_covid.util.ComunidadDto;
 
@@ -28,6 +35,9 @@ public class DataFragment extends Fragment {
     TextView nuevosEnUCI;
 
     TextView ubicacion;
+
+    LineChart lineChart;
+    LineDataSet lineDataSet;
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -71,6 +81,28 @@ public class DataFragment extends Fragment {
         ubicacion = root.findViewById(R.id.about);
         ubicacion.setText(dto.nombre);
 
+        generarGrafico(root);
+
         return root;
+    }
+
+    private void generarGrafico(View root){
+        // Enlazamos al XML
+        lineChart = root.findViewById(R.id.lineChart);
+
+        // Creamos un set de datos
+        ArrayList<Entry> lineEntries = new ArrayList<Entry>();
+        for (int i = 0; i<11; i++){
+            float y = (int) (Math.random() * 8) + 1;
+            lineEntries.add(new Entry((float) i,(float)y));
+        }
+
+        // Unimos los datos al data set
+        lineDataSet = new LineDataSet(lineEntries, "Grafico de prueba");
+
+        // Asociamos al gráfico
+        LineData lineData = new LineData();
+        lineData.addDataSet(lineDataSet);
+        lineChart.setData(lineData);
     }
 }

@@ -43,7 +43,7 @@
 
             <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="364dp"
                 android:stretchColumns="2">
 
                 <TableRow>
@@ -380,6 +380,10 @@
                         app:layout_constraintVertical_bias="0.502" />
                 </TableRow>
             </TableLayout>
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/lineChart"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

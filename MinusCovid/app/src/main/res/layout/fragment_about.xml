@@ -83,7 +83,6 @@
 
 
             <TableRow>
-
                 <TextView
                     android:id="@+id/adrian"
                     android:layout_width="wrap_content"
@@ -119,10 +118,6 @@
                     app:layout_constraintVertical_bias="0.0" />
 
             </TableRow>
-
-            <TableRow/>
-
-            <TableRow/>
 
             <TableRow>
 
@@ -161,14 +156,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.449" />
 
-
             </TableRow>
-
-            <TableRow/>
-
-            <TableRow/>
-
-            <TableRow/>
 
 
         </TableLayout>
