@@ -58,35 +58,67 @@ public class DataFragment extends Fragment {
         Bundle datosRecuperados = getArguments();
         dto = datosRecuperados.getParcelable("dto");
 
+
         totalCasos = root.findViewById(R.id.totalCasos);
-        totalCasos.setText(Integer.toString(dto.total_casos_acumulado));
+        if(!dto.total_casos_acumulado.equals("null"))
+            totalCasos.setText(dto.total_casos_acumulado);
+        else
+            totalCasos.setText(R.string.noData);
 
         totalCurados = root.findViewById(R.id.totalCurados);
-        totalCurados.setText(Integer.toString(dto.total_curados_acumulado));
+        if(!dto.total_curados_acumulado.equals("null"))
+            totalCurados.setText(dto.total_curados_acumulado);
+        else
+            totalCurados.setText(R.string.noData);
+
 
         totalInfectados = root.findViewById(R.id.totalInfectados);
-        totalInfectados.setText(Integer.toString(dto.total_infectados_acumulado));
+        if(!dto.total_infectados_acumulado.equals("null"))
+            totalInfectados.setText(dto.total_infectados_acumulado);
+        else
+            totalInfectados.setText(R.string.noData);
 
         totalFallecidos = root.findViewById(R.id.totalFallecidos);
-        totalFallecidos.setText(Integer.toString(dto.total_fallecidos_acumulado));
+        if(!dto.total_fallecidos_acumulado.equals("null"))
+            totalFallecidos.setText(dto.total_fallecidos_acumulado);
+        else
+            totalFallecidos.setText(R.string.noData);
 
         totalEnUCI = root.findViewById(R.id.totalEnUCI);
-        totalEnUCI.setText(Integer.toString(dto.total_uci_acumulado));
+        if( !dto.total_uci_acumulado.equals("null"))
+            totalEnUCI.setText(dto.total_uci_acumulado);
+        else
+            totalEnUCI.setText(R.string.noData);
 
         nuevosCasos = root.findViewById(R.id.nuevosCasos);
-        nuevosCasos.setText(Integer.toString(dto.nuevos_casos));
+        if(!dto.nuevos_casos.equals("null"))
+            nuevosCasos.setText(dto.nuevos_casos);
+        else
+            nuevosCasos.setText(R.string.noData);
 
         nuevosCurados = root.findViewById(R.id.nuevosCurados);
-        nuevosCurados.setText(Integer.toString(dto.nuevos_curados));
+        if(!dto.nuevos_curados.equals("null"))
+            nuevosCurados.setText(dto.nuevos_curados);
+        else
+            nuevosCurados.setText(R.string.noData);
 
         nuevosFallecidos = root.findViewById(R.id.nuevosFallecidos);
-        nuevosFallecidos.setText(Integer.toString(dto.nuevos_fallecidos));
+        if(!dto.nuevos_fallecidos.equals("null"))
+            nuevosFallecidos.setText(dto.nuevos_fallecidos);
+        else
+            nuevosFallecidos.setText(R.string.noData);
 
         nuevosEnUCI = root.findViewById(R.id.nuevosEnUCI);
-        nuevosEnUCI.setText(Integer.toString(dto.nuevos_uci));
+        if(!dto.nuevos_uci.equals("null"))
+            nuevosEnUCI.setText(dto.nuevos_uci);
+        else
+            nuevosEnUCI.setText(R.string.noData);
 
         ubicacion = root.findViewById(R.id.about);
-        ubicacion.setText(dto.nombre);
+        if(!dto.nombre.equals("null"))
+            ubicacion.setText(dto.nombre);
+        else
+            ubicacion.setText(R.string.noData);
 
         generarGrafico(root);
 
