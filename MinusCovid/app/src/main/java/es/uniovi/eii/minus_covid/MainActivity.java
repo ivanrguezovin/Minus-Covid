@@ -7,12 +7,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
@@ -23,16 +21,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import org.json.JSONObject;
-
-import java.util.concurrent.ExecutionException;
-
 import es.uniovi.eii.minus_covid.ui.about.AboutFragment;
 import es.uniovi.eii.minus_covid.ui.ajustes.SettingsFragment;
+import es.uniovi.eii.minus_covid.ui.general.GeneralFragment;
 import es.uniovi.eii.minus_covid.ui.mapa.MapFragment;
-import es.uniovi.eii.minus_covid.util.ApiConection;
-import es.uniovi.eii.minus_covid.util.ComunidadDto;
-import es.uniovi.eii.minus_covid.util.Parser;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -49,7 +41,7 @@ public class MainActivity extends AppCompatActivity{
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_general,
                 R.id.nav_map, R.id.nav_ajustes, R.id.nav_salir)
                 .setDrawerLayout(drawer)
                 .build();
@@ -59,7 +51,7 @@ public class MainActivity extends AppCompatActivity{
         navigationView.setNavigationItemSelectedListener(
                 menuItem -> {
                     FragmentManager fragmentManager = getSupportFragmentManager();
-                    //fragmentManager.popBackStack();
+                    fragmentManager.popBackStack();
                     int id = menuItem.getItemId();
                     if (id == R.id.nav_salir) {
                         AlertDialog dialogo = new AlertDialog
@@ -82,6 +74,16 @@ public class MainActivity extends AppCompatActivity{
                         fragmentManager.beginTransaction().replace(R.id.container_main, new SettingsFragment()).commit();
                     }else if (id == R.id.nav_about) {
                         fragmentManager.beginTransaction().replace(R.id.container_main, new AboutFragment()).commit();
+                    }else if (id == R.id.nav_general) {
+                        if (hayConexionAInternet()) {
+                            if (hayInternet()) {
+                                fragmentManager.beginTransaction().replace(R.id.container_main, new GeneralFragment()).commit();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "No existe conexión a internet.", Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            Toast.makeText(getApplicationContext(), "No es posible conectarse a internet.", Toast.LENGTH_LONG).show();
+                        }
                     }else if (id == R.id.nav_map) {
                         if (hayConexionAInternet()) {
                             if (hayInternet()) {
@@ -98,6 +100,9 @@ public class MainActivity extends AppCompatActivity{
                     return true;
                 }
         );
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.container_main, new GeneralFragment()).commit();
+        navigationView.setCheckedItem(R.id.nav_general);
     }
 
     private boolean hayInternet() {

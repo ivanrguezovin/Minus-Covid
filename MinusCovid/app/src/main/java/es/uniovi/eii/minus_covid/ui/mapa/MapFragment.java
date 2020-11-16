@@ -52,8 +52,6 @@ public class MapFragment extends Fragment {
         spinnerCommunity = root.findViewById(R.id.spinnerCommunity);
         buttonSearch = root.findViewById(R.id.bt_search);
 
-        System.out.println(spinnerCommunity.getSelectedItem().toString());
-
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
