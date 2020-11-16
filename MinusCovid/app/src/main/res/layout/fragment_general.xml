@@ -19,24 +19,19 @@
             android:layout_marginTop="18dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="18dp"
-            android:text="Resumen de España"
+            android:text="@string/resumen"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
             android:textStyle="bold"></TextView>
 
-        <ScrollView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="18dp" />
-        </ScrollView>
+            android:layout_height="305dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="18dp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

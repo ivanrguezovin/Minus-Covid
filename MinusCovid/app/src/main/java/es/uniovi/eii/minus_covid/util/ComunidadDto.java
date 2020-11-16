@@ -60,6 +60,10 @@ public class ComunidadDto implements Parcelable {
         this.nuevos_uci = nuevos_uci;
     }
 
+    public ComunidadDto(String nombre) {
+        this.nombre = nombre;
+    }
+
     public ComunidadDto(int total_casos_acumulado, int total_curados_acumulado, int total_infectados_acumulado,
                         int total_fallecidos_acumulado, int total_uci_acumulado, int nuevos_casos,
                         int nuevos_curados, int nuevos_fallecidos, int nuevos_uci) {
