@@ -69,7 +69,7 @@ public class MapFragment extends Fragment {
         comunidades.put("Asturias","asturias");
         comunidades.put("Cantabria","cantabria");
         comunidades.put("Castilla-La Mancha","castilla-la_mancha");
-        comunidades.put("Castilla y León","castilla_y_león");
+        comunidades.put("Castilla y León","castilla_y_leon");
         comunidades.put("Cataluña","cataluna");
         comunidades.put("Ceuta","ceuta");
         comunidades.put("Comunidad de Madrid","madrid");
@@ -91,9 +91,13 @@ public class MapFragment extends Fragment {
         List<ComunidadDto> listDto = callApi();
         Bundle datosAEnviar = new Bundle();
 
+        String id = comunidades.get(spinnerCommunity.getSelectedItem().toString());
+
         for(ComunidadDto dto : listDto){
-            if(dto.id == comunidades.get(spinnerCommunity.getSelectedItem().toString()))
+            if(dto.id.equals(id)) {
                 datosAEnviar.putParcelable("dto", dto);
+                break;
+            }
         }
 
 

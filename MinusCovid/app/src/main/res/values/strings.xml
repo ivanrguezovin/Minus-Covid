@@ -25,4 +25,5 @@
     <string name="nuevosFallecidos">Nuevos fallecidos</string>
     <string name="nuevosCasosEnPlanta">Nuevos casos en planta</string>
     <string name="nuevosCasosEnUCI">Casos en UCI</string>
+    <string name="noData">N/A</string>
 </resources>
