@@ -106,7 +106,7 @@ public class MapFragment extends Fragment {
                 .commit();
     }
 
-    public List<ComunidadDto> callApi(){ //Mover este metodo a donde se llame a la api para obtener los datos
+    public List<ComunidadDto> callApi(){
         try{
             JSONObject obj = new ApiConection().execute().get();
             List<ComunidadDto> dto = Parser.parse(obj);

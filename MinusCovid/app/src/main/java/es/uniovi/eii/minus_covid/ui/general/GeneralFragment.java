@@ -10,11 +10,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import es.uniovi.eii.minus_covid.R;
+import es.uniovi.eii.minus_covid.util.ApiConection;
 import es.uniovi.eii.minus_covid.util.ComunidadDto;
+import es.uniovi.eii.minus_covid.util.Parser;
 import es.uniovi.eii.minus_covid.util.RecyclerView_Adapter;
 
 public class GeneralFragment extends Fragment {
@@ -43,12 +48,19 @@ public class GeneralFragment extends Fragment {
     }
 
     private List<ComunidadDto> generarComunidades(){
-        List<ComunidadDto> cds = new ArrayList<ComunidadDto>();
-        cds.add(new ComunidadDto("Andalucía"));
-        cds.add(new ComunidadDto("Asturias"));
-        cds.add(new ComunidadDto("Cataluña"));
-        cds.add(new ComunidadDto("Murcia"));
+        List<ComunidadDto> cds = callApi();
 
         return cds;
+    }
+
+    public List<ComunidadDto> callApi(){
+        try{
+            JSONObject obj = new ApiConection().execute().get();
+            List<ComunidadDto> dto = Parser.parse(obj);
+            return dto;
+        }catch(InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

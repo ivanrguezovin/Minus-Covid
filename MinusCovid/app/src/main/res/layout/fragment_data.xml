@@ -49,7 +49,7 @@
                 <TableRow>
 
                     <TextView
-                        android:id="@+id/autores"
+                        android:id="@+id/totales"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
@@ -58,7 +58,7 @@
                         android:fontFamily="sans-serif-black"
                         android:text="Totales"
                         android:textColor="@color/design_default_color_on_secondary"
-                        app:layout_constraintBottom_toTopOf="@+id/ivan"
+                        app:layout_constraintBottom_toTopOf="@+id/totalCasos_"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.039"
                         app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +69,7 @@
                 <TableRow>
 
                     <TextView
-                        android:id="@+id/ivan"
+                        android:id="@+id/totalCasos_"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
@@ -93,7 +93,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.277"
-                        app:layout_constraintStart_toEndOf="@+id/ivan"
+                        app:layout_constraintStart_toEndOf="@+id/totalCasos_"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.205" />
 
@@ -103,7 +103,7 @@
                 <TableRow>
 
                     <TextView
-                        android:id="@+id/adrian"
+                        android:id="@+id/totalCurados_"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
@@ -114,7 +114,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.056"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ivan"
+                        app:layout_constraintTop_toBottomOf="@+id/totalCasos_"
                         app:layout_constraintVertical_bias="0.027" />
 
                     <TextView
@@ -127,7 +127,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.143"
-                        app:layout_constraintStart_toEndOf="@+id/adrian"
+                        app:layout_constraintStart_toEndOf="@+id/totalCurados_"
                         app:layout_constraintTop_toBottomOf="@+id/totalCasos"
                         app:layout_constraintVertical_bias="0.027" />
                 </TableRow>
@@ -135,7 +135,7 @@
                 <TableRow>
 
                     <TextView
-                        android:id="@+id/luison"
+                        android:id="@+id/totalInfectados_"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
@@ -159,7 +159,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.446"
-                        app:layout_constraintStart_toEndOf="@+id/luison"
+                        app:layout_constraintStart_toEndOf="@+id/totalInfectados_"
                         app:layout_constraintTop_toBottomOf="@+id/totalFallecidos"
                         app:layout_constraintVertical_bias="0.027" />
                 </TableRow>
@@ -211,7 +211,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.057"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/adrian"
+                        app:layout_constraintTop_toBottomOf="@+id/totalCurados_"
                         app:layout_constraintVertical_bias="0.031" />
 
                     <TextView

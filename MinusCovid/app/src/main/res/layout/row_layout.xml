@@ -2,16 +2,195 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
-        android:text="abcd"
-        android:textColor="@color/design_default_color_on_secondary"
-        android:textSize="14sp" />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="364dp"
+        android:stretchColumns="2">
+        <TableRow>
+
+            <TextView
+                android:id="@+id/nombre"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:text="Comunidad"
+                android:textColor="@color/design_default_color_on_secondary"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.048"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.205" />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:id="@+id/totalCasos_"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:text="@string/totalCasos"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.048"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.205" />
+
+            <TextView
+                android:id="@+id/totalCasos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:text="n"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.277"
+                app:layout_constraintStart_toEndOf="@+id/totalCasos_"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.205" />
+
+        </TableRow>
+
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/totalCurados_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:text="@string/totalCurados"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.056"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/totalCasos_"
+                app:layout_constraintVertical_bias="0.027" />
+
+            <TextView
+                android:id="@+id/totalCurados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="50dp"
+                android:text="n"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.143"
+                app:layout_constraintStart_toEndOf="@+id/totalCurados_"
+                app:layout_constraintTop_toBottomOf="@+id/totalCasos"
+                app:layout_constraintVertical_bias="0.027" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/totalFallecidos_"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:text="@string/totalFallecidos"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.294"
+                app:layout_constraintStart_toEndOf="@+id/totalCasos"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.205" />
+
+            <TextView
+                android:id="@+id/totalFallecidos"
+                android:layout_width="101dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="127dp"
+                android:text="n"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.467"
+                app:layout_constraintStart_toEndOf="@+id/totalFallecidos_"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.205" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/nuevosCasos_"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:text="Nuevos casos (hoy)"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.057"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/totalCurados_"
+                app:layout_constraintVertical_bias="0.031" />
+
+            <TextView
+                android:id="@+id/nuevosCasos"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="50dp"
+                android:text="n"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.169"
+                app:layout_constraintStart_toEndOf="@+id/nuevosCasos_"
+                app:layout_constraintTop_toBottomOf="@+id/totalCurados"
+                app:layout_constraintVertical_bias="0.033" />
+
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:id="@+id/nuevosFallecidos_"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:text="Fallecidos (hoy)"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.057"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/totalCurados_"
+                app:layout_constraintVertical_bias="0.031" />
+
+            <TextView
+                android:id="@+id/nuevosFallecidos"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="50dp"
+                android:text="n"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.169"
+                app:layout_constraintStart_toEndOf="@+id/nuevosFallecidos_"
+                app:layout_constraintTop_toBottomOf="@+id/totalCurados"
+                app:layout_constraintVertical_bias="0.033" />
+
+        </TableRow>
+    </TableLayout>
 
 </RelativeLayout>
