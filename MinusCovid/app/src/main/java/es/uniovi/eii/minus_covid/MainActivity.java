@@ -24,6 +24,7 @@ import androidx.appcompat.widget.Toolbar;
 import es.uniovi.eii.minus_covid.ui.about.AboutFragment;
 import es.uniovi.eii.minus_covid.ui.ajustes.SettingsFragment;
 import es.uniovi.eii.minus_covid.ui.general.GeneralFragment;
+import es.uniovi.eii.minus_covid.ui.home.HomeFragment;
 import es.uniovi.eii.minus_covid.ui.mapa.MapFragment;
 
 public class MainActivity extends AppCompatActivity{
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity{
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_general,
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home,R.id.nav_general,
                 R.id.nav_map, R.id.nav_ajustes, R.id.nav_salir)
                 .setDrawerLayout(drawer)
                 .build();
@@ -74,6 +75,8 @@ public class MainActivity extends AppCompatActivity{
                         fragmentManager.beginTransaction().replace(R.id.container_main, new SettingsFragment()).commit();
                     }else if (id == R.id.nav_about) {
                         fragmentManager.beginTransaction().replace(R.id.container_main, new AboutFragment()).commit();
+                    }else if (id == R.id.nav_home) {
+                        fragmentManager.beginTransaction().replace(R.id.container_main, new HomeFragment()).commit();
                     }else if (id == R.id.nav_general) {
                         if (hayConexionAInternet()) {
                             if (hayInternet()) {
@@ -101,8 +104,8 @@ public class MainActivity extends AppCompatActivity{
                 }
         );
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container_main, new GeneralFragment()).commit();
-        navigationView.setCheckedItem(R.id.nav_general);
+        getSupportFragmentManager().beginTransaction().replace(R.id.container_main, new HomeFragment()).commit();
+        navigationView.setCheckedItem(R.id.nav_home);
     }
 
     private boolean hayInternet() {

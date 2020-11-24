@@ -8,6 +8,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_mapa">Mapa</string>
+    <string name="menu_home">Inicio</string>
     <string name="menu_general">Resumen</string>
     <string name="menu_ajustes">Ajustes</string>
     <string name="menu_about">Sobre nosotros</string>
@@ -15,6 +16,8 @@
 
     <string name="buscar">Buscar</string>
     <string name="selectCommunity">Seleccione una comunidad autónoma</string>
+
+    <string name="description">Bienvenidos a nuestra aplicación de geolocalización del COVID-19 en España.</string>
 
     <string name="totalCasos">Casos</string>
     <string name="totalCurados">Casos curados</string>
