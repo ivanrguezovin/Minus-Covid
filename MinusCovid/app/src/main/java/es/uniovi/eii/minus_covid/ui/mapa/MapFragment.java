@@ -25,11 +25,12 @@ import es.uniovi.eii.minus_covid.R;
 import es.uniovi.eii.minus_covid.ui.mapa.datos.DataFragment;
 import es.uniovi.eii.minus_covid.util.ApiConection;
 import es.uniovi.eii.minus_covid.util.ComunidadDto;
+import es.uniovi.eii.minus_covid.util.ComunidadFechaDto;
 import es.uniovi.eii.minus_covid.util.Parser;
 
 public class MapFragment extends Fragment {
 
-    private HashMap<String,String> comunidades = new HashMap<>();
+    private HashMap<String, String> comunidades = new HashMap<>();
 
 
     TextView selectCommunity;
@@ -61,38 +62,41 @@ public class MapFragment extends Fragment {
         return root;
     }
 
-    private void generarHash(){
-        comunidades.put("Andalucía","andalucia");
-        comunidades.put("Aragón","aragon");
-        comunidades.put("Asturias","asturias");
-        comunidades.put("Cantabria","cantabria");
-        comunidades.put("Castilla-La Mancha","castilla-la_mancha");
-        comunidades.put("Castilla y León","castilla_y_leon");
-        comunidades.put("Cataluña","cataluna");
-        comunidades.put("Ceuta","ceuta");
-        comunidades.put("Comunidad de Madrid","madrid");
-        comunidades.put("Comunidad Foral de Navarra","navarra");
-        comunidades.put("Comunidad Valenciana","c_valenciana");
-        comunidades.put("Extremadura","extremadura");
-        comunidades.put("Galicia","galicia");
-        comunidades.put("Islas Baleares","baleares");
-        comunidades.put("Islas Canarias","canarias");
-        comunidades.put("La Rioja","la_rioja");
-        comunidades.put("Melilla","melilla");
-        comunidades.put("País Vasco","pais_vasco");
-        comunidades.put("Región de Murcia","murcia");
+    private void generarHash() {
+        comunidades.put("Andalucía", "andalucia");
+        comunidades.put("Aragón", "aragon");
+        comunidades.put("Asturias", "asturias");
+        comunidades.put("Cantabria", "cantabria");
+        comunidades.put("Castilla-La Mancha", "castilla-la_mancha");
+        comunidades.put("Castilla y León", "castilla_y_leon");
+        comunidades.put("Cataluña", "cataluna");
+        comunidades.put("Ceuta", "ceuta");
+        comunidades.put("Comunidad de Madrid", "madrid");
+        comunidades.put("Comunidad Foral de Navarra", "navarra");
+        comunidades.put("Comunidad Valenciana", "c_valenciana");
+        comunidades.put("Extremadura", "extremadura");
+        comunidades.put("Galicia", "galicia");
+        comunidades.put("Islas Baleares", "baleares");
+        comunidades.put("Islas Canarias", "canarias");
+        comunidades.put("La Rioja", "la_rioja");
+        comunidades.put("Melilla", "melilla");
+        comunidades.put("País Vasco", "pais_vasco");
+        comunidades.put("Región de Murcia", "murcia");
     }
 
 
-    private void searchLocationData(){
-        DataFragment fr=new DataFragment();
-        List<ComunidadDto> listDto = callApi();
+    private void searchLocationData() {
+        DataFragment fr = new DataFragment();
+        List<ComunidadDto> listDto = callApi(1, null);
+
         Bundle datosAEnviar = new Bundle();
 
         String id = comunidades.get(spinnerCommunity.getSelectedItem().toString());
-
-        for(ComunidadDto dto : listDto){
-            if(dto.id.equals(id)) {
+        ComunidadFechaDto comDto = new ComunidadFechaDto();
+        comDto.listaFechas = callApi(2, id);
+        datosAEnviar.putParcelable("dtoFechas", comDto);
+        for (ComunidadDto dto : listDto) {
+            if (dto.id.equals(id)) {
                 datosAEnviar.putParcelable("dto", dto);
                 break;
             }
@@ -101,17 +105,17 @@ public class MapFragment extends Fragment {
 
         fr.setArguments(datosAEnviar);
         getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container_main,fr)
+                .replace(R.id.container_main, fr)
                 .addToBackStack(null)
                 .commit();
     }
 
-    public List<ComunidadDto> callApi(){
-        try{
-            JSONObject obj = new ApiConection().execute().get();
+    public List<ComunidadDto> callApi(int option, String com) {
+        try {
+            JSONObject obj = new ApiConection(option, com).execute().get();
             List<ComunidadDto> dto = Parser.parse(obj);
             return dto;
-        }catch(InterruptedException | ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
         return null;
