@@ -94,6 +94,7 @@ public class MapFragment extends Fragment {
         String id = comunidades.get(spinnerCommunity.getSelectedItem().toString());
         ComunidadFechaDto comDto = new ComunidadFechaDto();
         comDto.listaFechas = callApi(2, id);
+        System.out.println("--------------MAP FRAGMENT ----------" + comDto.listaFechas.size());
         datosAEnviar.putParcelable("dtoFechas", comDto);
         for (ComunidadDto dto : listDto) {
             if (dto.id.equals(id)) {
@@ -112,9 +113,17 @@ public class MapFragment extends Fragment {
 
     public List<ComunidadDto> callApi(int option, String com) {
         try {
-            JSONObject obj = new ApiConection(option, com).execute().get();
-            List<ComunidadDto> dto = Parser.parse(obj);
-            return dto;
+            if(option==1){
+                JSONObject obj = new ApiConection(option, com).execute().get();
+                List<ComunidadDto> dto = Parser.parse(obj);
+                return dto;
+            }
+            if(option==2){
+                JSONObject obj = new ApiConection(option, com).execute().get();
+                List<ComunidadDto> dto = Parser.parserComunidadFechas(obj);
+                return dto;
+            }
+
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }

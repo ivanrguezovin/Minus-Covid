@@ -50,17 +50,16 @@ public class GeneralFragment extends Fragment {
         return root;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     private List<ComunidadDto> generarComunidades(){
         List<ComunidadDto> cds = callApi();
 
         return cds;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public List<ComunidadDto> callApi(){
         try{
-            JSONObject obj = new ApiConection().execute().get();
+            JSONObject obj = new ApiConection(1, null).execute().get();
             List<ComunidadDto> dto = Parser.parse(obj);
             return dto;
         }catch(InterruptedException | ExecutionException e) {

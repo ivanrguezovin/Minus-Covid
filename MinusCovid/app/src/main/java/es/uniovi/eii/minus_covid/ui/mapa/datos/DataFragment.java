@@ -23,9 +23,11 @@ import java.util.ArrayList;
 
 import es.uniovi.eii.minus_covid.R;
 import es.uniovi.eii.minus_covid.util.ComunidadDto;
+import es.uniovi.eii.minus_covid.util.ComunidadFechaDto;
 
 public class DataFragment extends Fragment {
     private ComunidadDto dto;
+    private ComunidadFechaDto dtoFechas;
 
     TextView totalCasos;
     TextView totalCurados;
@@ -57,6 +59,7 @@ public class DataFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_data, container, false);
         Bundle datosRecuperados = getArguments();
         dto = datosRecuperados.getParcelable("dto");
+        dtoFechas = datosRecuperados.getParcelable("dtoFechas");
 
 
         totalCasos = root.findViewById(R.id.totalCasos);
@@ -121,8 +124,12 @@ public class DataFragment extends Fragment {
             ubicacion.setText(R.string.noData);
 
         generarGrafico(root);
-
+        testList();
         return root;
+    }
+
+    private void testList(){
+            System.out.println("--------------Tamaño-----------"+dtoFechas.listaFechas.size());
     }
 
     private void generarGrafico(View root){
@@ -132,16 +139,17 @@ public class DataFragment extends Fragment {
 
         // Creamos un set de datos
         ArrayList<Entry> lineEntries = new ArrayList<Entry>();
-        for (int i = 0; i<11; i++){
+        for (int i = 0; i<7; i++){
             float y = (int) (Math.random() * 8) + 1;
-            lineEntries.add(new Entry((float) i,(float)y));
+            lineEntries.add(new Entry((float) i,0));
         }
 
         // Creamos un set de datos
         ArrayList<BarEntry> barEntries = new ArrayList<BarEntry>();
-        for (int i = 0; i<11; i++){
+        for (int i = 0; i<7; i++){
             float y = (int) (Math.random() * 8) + 1;
-            barEntries.add(new BarEntry((float) i,(float)y));
+            //Float.parseFloat(dtoFechas.listaFechas.get(i).total_infectados_acumulado))
+            barEntries.add(new BarEntry((float) i, 0));
         }
 
         // Unimos los datos al data set

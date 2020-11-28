@@ -17,10 +17,13 @@ import java.util.List;
 public class Parser {
 
     static Date date = new Date();
+    static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     public static List<ComunidadDto> parse(JSONObject data_obj) {
         ArrayList<ComunidadDto> dtoList = new ArrayList<ComunidadDto>();
+        String formatedDate = sdf.format(date);
         try {
+            data_obj = (JSONObject) data_obj.get(formatedDate);
             data_obj = (JSONObject) data_obj.get("countries");
             data_obj = (JSONObject) data_obj.get("Spain");
             JSONArray jsonarr = data_obj.getJSONArray("regions");
@@ -51,7 +54,7 @@ public class Parser {
     public static List<ComunidadDto> parserComunidadFechas(JSONObject data_obj) {
 
         ArrayList<ComunidadDto> dtoList = new ArrayList<ComunidadDto>();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.add(Calendar.DATE, -7);
@@ -61,7 +64,6 @@ public class Parser {
         try {
             for (int j = 0; j < 7; j++) {
                 formateDateLastWeek = sdf.format(dateBefore7Days);
-                data_obj = (JSONObject) data_obj.get("dates");
                 data_obj = (JSONObject) data_obj.get(formateDateLastWeek);
                 data_obj = (JSONObject) data_obj.get("countries");
                 data_obj = (JSONObject) data_obj.get("Spain");

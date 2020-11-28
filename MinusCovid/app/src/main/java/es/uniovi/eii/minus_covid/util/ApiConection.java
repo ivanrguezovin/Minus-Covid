@@ -80,8 +80,9 @@ public class ApiConection extends AsyncTask<String, Integer, JSONObject> {
                 JSONObject data_obj = (JSONObject) new JSONTokener(inline).nextValue();
 
                 // Get the required object from the above created object
+
                 obj = (JSONObject) data_obj.get("dates");
-                obj = (JSONObject) obj.get(formatedDate);
+                //obj = (JSONObject) obj.get(formatedDate);
                 /*
                  * // Get the required data using its key
                  * System.out.println(obj.get("TotalRecovered"));
