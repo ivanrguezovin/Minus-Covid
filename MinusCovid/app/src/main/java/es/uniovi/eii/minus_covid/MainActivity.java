@@ -78,25 +78,9 @@ public class MainActivity extends AppCompatActivity{
                     }else if (id == R.id.nav_home) {
                         fragmentManager.beginTransaction().replace(R.id.container_main, new HomeFragment()).commit();
                     }else if (id == R.id.nav_general) {
-                        if (hayConexionAInternet()) {
-                            if (hayInternet()) {
-                                fragmentManager.beginTransaction().replace(R.id.container_main, new GeneralFragment()).commit();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "No existe conexión a internet.", Toast.LENGTH_LONG).show();
-                            }
-                        } else {
-                            Toast.makeText(getApplicationContext(), "No es posible conectarse a internet.", Toast.LENGTH_LONG).show();
-                        }
+                        fragmentManager.beginTransaction().replace(R.id.container_main, new GeneralFragment()).commit();
                     }else if (id == R.id.nav_map) {
-                        if (hayConexionAInternet()) {
-                            if (hayInternet()) {
-                                fragmentManager.beginTransaction().replace(R.id.container_main, new MapFragment()).commit();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "No existe conexión a internet.", Toast.LENGTH_LONG).show();
-                            }
-                        } else {
-                            Toast.makeText(getApplicationContext(), "No es posible conectarse a internet.", Toast.LENGTH_LONG).show();
-                        }
+                        fragmentManager.beginTransaction().replace(R.id.container_main, new MapFragment()).commit();
                     }
                     DrawerLayout drawerA = (DrawerLayout) findViewById(R.id.drawer_layout);
                     drawerA.closeDrawer(GravityCompat.START);
@@ -107,7 +91,7 @@ public class MainActivity extends AppCompatActivity{
         getSupportFragmentManager().beginTransaction().replace(R.id.container_main, new HomeFragment()).commit();
         navigationView.setCheckedItem(R.id.nav_home);
     }
-
+    /*
     private boolean hayInternet() {
         try {
             Process process = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.es");
@@ -125,6 +109,7 @@ public class MainActivity extends AppCompatActivity{
         NetworkInfo actNetInfo = connectivityManager.getActiveNetworkInfo();
         return (actNetInfo != null && actNetInfo.isConnected());
     }
+    */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
