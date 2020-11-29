@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -166,16 +167,20 @@ public class DataFragment extends Fragment {
         barDataSetCurados = new BarDataSet(barEntriesC, "Curados en los últimos  7 días");
 
         // Asociamos al gráfico
+
         LineData lineData = new LineData();
         lineData.addDataSet(lineDataSetInfectados);
+        lineChartInfectados.getDescription().setEnabled(false);
         lineChartInfectados.setData(lineData);
 
         BarData barData = new BarData();
         barData.addDataSet(barDataSetFallecidos);
+        barChartFallecidos.getDescription().setEnabled(false);
         barChartFallecidos.setData(barData);
 
         BarData barData2 = new BarData();
         barData2.addDataSet(barDataSetCurados);
+        barChartCurados.getDescription().setEnabled(false);
         barChartCurados.setData(barData2);
     }
 }
