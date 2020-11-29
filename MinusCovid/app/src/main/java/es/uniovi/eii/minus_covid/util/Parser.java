@@ -54,16 +54,17 @@ public class Parser {
     public static List<ComunidadDto> parserComunidadFechas(JSONObject data_obj) {
 
         ArrayList<ComunidadDto> dtoList = new ArrayList<ComunidadDto>();
-
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.add(Calendar.DATE, -7);
-        Date dateBefore7Days = cal.getTime();
-        String formateDateLastWeek ="";
-
+        JSONObject copia = data_obj; //copia sin recorrer
         try {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            cal.add(Calendar.DATE, -7);
+            Date dateBefore7Days = cal.getTime();
+            String formateDateLastWeek = "";
             for (int j = 0; j < 7; j++) {
                 formateDateLastWeek = sdf.format(dateBefore7Days);
+                System.out.println("LA FECHA ES ESTA --------------------->" + formateDateLastWeek);
+
                 data_obj = (JSONObject) data_obj.get(formateDateLastWeek);
                 data_obj = (JSONObject) data_obj.get("countries");
                 data_obj = (JSONObject) data_obj.get("Spain");
@@ -84,15 +85,17 @@ public class Parser {
                     dto.nuevos_fallecidos = jsonarr.getJSONObject(i).getString("today_new_deaths");
                     dto.nuevos_uci = jsonarr.getJSONObject(i).getString("today_new_intensive_care");
                     dtoList.add(dto);
+                    System.out.println(dto.toString());
                 }
                 cal.setTime(dateBefore7Days);
                 cal.add(Calendar.DATE, 1);
                 dateBefore7Days = cal.getTime();
+                data_obj = copia;
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
-            System.out.println("PATATAAA");
+            System.out.println("Rompe en el parser rango de fecha");
         }
         return dtoList;
     }

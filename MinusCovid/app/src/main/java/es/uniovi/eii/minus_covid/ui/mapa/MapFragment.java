@@ -94,7 +94,7 @@ public class MapFragment extends Fragment {
         String id = comunidades.get(spinnerCommunity.getSelectedItem().toString());
         ComunidadFechaDto comDto = new ComunidadFechaDto();
         comDto.listaFechas = callApi(2, id);
-        System.out.println("--------------MAP FRAGMENT ----------" + comDto.listaFechas.size());
+        System.out.println("--------------MAP FRAGMENT ----------" + comDto.listaFechas.get(0).toString());
         datosAEnviar.putParcelable("dtoFechas", comDto);
         for (ComunidadDto dto : listDto) {
             if (dto.id.equals(id)) {

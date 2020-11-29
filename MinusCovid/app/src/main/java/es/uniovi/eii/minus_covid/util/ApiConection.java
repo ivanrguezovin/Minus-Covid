@@ -46,6 +46,7 @@ public class ApiConection extends AsyncTask<String, Integer, JSONObject> {
                     break;
                 case 2:
                     stringUrl = "https://api.covid19tracking.narrativa.com/api/country/spain/region/" + region + "?date_from=" + formateDateLastWeek + "&date_to=" + formatedDate;
+                    System.out.println(stringUrl);
                     break;
             }
 
