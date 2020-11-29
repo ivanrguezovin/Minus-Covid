@@ -1,11 +1,13 @@
 package es.uniovi.eii.minus_covid.ui.general;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +33,7 @@ public class GeneralFragment extends Fragment {
         super.onCreate(savedInstance);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class GeneralFragment extends Fragment {
         return root;
     }
 
+
     private List<ComunidadDto> generarComunidades(){
         List<ComunidadDto> cds = callApi();
 
@@ -55,7 +59,7 @@ public class GeneralFragment extends Fragment {
 
     public List<ComunidadDto> callApi(){
         try{
-            JSONObject obj = new ApiConection().execute().get();
+            JSONObject obj = new ApiConection(1, null).execute().get();
             List<ComunidadDto> dto = Parser.parse(obj);
             return dto;
         }catch(InterruptedException | ExecutionException e) {

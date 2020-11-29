@@ -392,6 +392,12 @@
                 android:layout_height="200dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"/>
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barChart2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,9 +23,11 @@ import java.util.ArrayList;
 
 import es.uniovi.eii.minus_covid.R;
 import es.uniovi.eii.minus_covid.util.ComunidadDto;
+import es.uniovi.eii.minus_covid.util.ComunidadFechaDto;
 
 public class DataFragment extends Fragment {
     private ComunidadDto dto;
+    private ComunidadFechaDto dtoFechas;
 
     TextView totalCasos;
     TextView totalCurados;
@@ -40,11 +42,14 @@ public class DataFragment extends Fragment {
 
     TextView ubicacion;
 
-    LineChart lineChart;
-    LineDataSet lineDataSet;
+    LineChart lineChartInfectados;
+    LineDataSet lineDataSetInfectados;
 
-    BarChart barChart;
-    BarDataSet barDataSet;
+    BarChart barChartFallecidos;
+    BarDataSet barDataSetFallecidos;
+
+    BarChart barChartCurados;
+    BarDataSet barDataSetCurados;
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -57,6 +62,7 @@ public class DataFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_data, container, false);
         Bundle datosRecuperados = getArguments();
         dto = datosRecuperados.getParcelable("dto");
+        dtoFechas = datosRecuperados.getParcelable("dtoFechas");
 
 
         totalCasos = root.findViewById(R.id.totalCasos);
@@ -125,36 +131,51 @@ public class DataFragment extends Fragment {
         return root;
     }
 
+
     private void generarGrafico(View root){
         // Enlazamos al XML
-        lineChart = root.findViewById(R.id.lineChart);
-        barChart = root.findViewById(R.id.barChart);
+        lineChartInfectados = root.findViewById(R.id.lineChart);
+        barChartFallecidos = root.findViewById(R.id.barChart);
+        barChartCurados = root.findViewById(R.id.barChart2);
 
         // Creamos un set de datos
         ArrayList<Entry> lineEntries = new ArrayList<Entry>();
-        for (int i = 0; i<11; i++){
-            float y = (int) (Math.random() * 8) + 1;
-            lineEntries.add(new Entry((float) i,(float)y));
+        for (int i = 0; i<7; i++){
+
+            lineEntries.add(new Entry((float) i,Float.parseFloat(dtoFechas.listaFechas.get(i).total_infectados_acumulado)));
         }
 
         // Creamos un set de datos
         ArrayList<BarEntry> barEntries = new ArrayList<BarEntry>();
-        for (int i = 0; i<11; i++){
-            float y = (int) (Math.random() * 8) + 1;
-            barEntries.add(new BarEntry((float) i,(float)y));
+
+        for (int i = 0; i<7; i++){
+
+            //Float.parseFloat(dtoFechas.listaFechas.get(i).total_infectados_acumulado))
+            barEntries.add(new BarEntry((float) i, Float.parseFloat(dtoFechas.listaFechas.get(i).total_fallecidos_acumulado)));
+
+        }
+
+        ArrayList<BarEntry> barEntriesC = new ArrayList<BarEntry>();
+        for (int i = 0; i<7; i++){
+            barEntriesC.add(new BarEntry((float) i, Float.parseFloat(dtoFechas.listaFechas.get(i).nuevos_curados)));
         }
 
         // Unimos los datos al data set
-        lineDataSet = new LineDataSet(lineEntries, "Grafico de prueba");
-        barDataSet = new BarDataSet(barEntries, "Barras prueba");
+        lineDataSetInfectados = new LineDataSet(lineEntries, "Infectados en los últimos  7 días");
+        barDataSetFallecidos = new BarDataSet(barEntries, "Fallecidos en los últimos  7 días");
+        barDataSetCurados = new BarDataSet(barEntriesC, "Curados en los últimos  7 días");
 
         // Asociamos al gráfico
         LineData lineData = new LineData();
-        lineData.addDataSet(lineDataSet);
-        lineChart.setData(lineData);
+        lineData.addDataSet(lineDataSetInfectados);
+        lineChartInfectados.setData(lineData);
 
         BarData barData = new BarData();
-        barData.addDataSet(barDataSet);
-        barChart.setData(barData);
+        barData.addDataSet(barDataSetFallecidos);
+        barChartFallecidos.setData(barData);
+
+        BarData barData2 = new BarData();
+        barData2.addDataSet(barDataSetCurados);
+        barChartCurados.setData(barData2);
     }
 }
