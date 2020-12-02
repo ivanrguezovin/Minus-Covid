@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,6 +35,7 @@ public class GeneralFragment extends Fragment {
 
     List<ComunidadDto> cds;
     private HashMap<String, String> comunidades = new HashMap<>();
+    RecyclerView recyclerView;
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -49,11 +51,11 @@ public class GeneralFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_general, container, false);
 
-        RecyclerView recyclerView = root.findViewById(R.id.recyclerView);
+        recyclerView = root.findViewById(R.id.recyclerView);
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getActivity(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
-                        searchLocationData(root);
+                        searchLocationData(recyclerView);
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
@@ -93,7 +95,7 @@ public class GeneralFragment extends Fragment {
 
     private void searchLocationData(View root) {
         DataFragment fr = new DataFragment();
-        TextView t = root.findViewById(R.id.nombre);
+        TextView t = recyclerView.findViewById(R.id.nombre);
         String id = String.valueOf(t.getText());
         List<ComunidadDto> listDto = callApi(1, id);
         Bundle datosAEnviar = new Bundle();
