@@ -20,6 +20,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import es.uniovi.eii.minus_covid.R;
@@ -34,7 +35,7 @@ import es.uniovi.eii.minus_covid.util.RecyclerView_Adapter;
 public class GeneralFragment extends Fragment {
 
     List<ComunidadDto> cds;
-    private HashMap<String, String> comunidades = new HashMap<>();
+    private HashMap<String, Integer> comunidades = new HashMap<>();
     RecyclerView recyclerView;
 
     @Override
@@ -52,10 +53,11 @@ public class GeneralFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_general, container, false);
 
         recyclerView = root.findViewById(R.id.recyclerView);
+        RecyclerView_Adapter adapter = new RecyclerView_Adapter(cds, getActivity().getApplication());
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getActivity(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
-                        searchLocationData(recyclerView);
+                        searchLocationData(position);
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
@@ -63,7 +65,6 @@ public class GeneralFragment extends Fragment {
                     }
                 })
         );
-        RecyclerView_Adapter adapter = new RecyclerView_Adapter(cds, getActivity().getApplication());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -72,50 +73,61 @@ public class GeneralFragment extends Fragment {
     }
 
     private void generarHash() {
-        comunidades.put("Andalucía", "andalucia");
-        comunidades.put("Aragón", "aragon");
-        comunidades.put("Asturias", "asturias");
-        comunidades.put("Cantabria", "cantabria");
-        comunidades.put("Castilla-La Mancha", "castilla-la_mancha");
-        comunidades.put("Castilla y León", "castilla_y_leon");
-        comunidades.put("Cataluña", "cataluna");
-        comunidades.put("Ceuta", "ceuta");
-        comunidades.put("Madrid", "madrid");
-        comunidades.put("Navarra", "navarra");
-        comunidades.put("C. Valenciana", "c_valenciana");
-        comunidades.put("Extremadura", "extremadura");
-        comunidades.put("Galicia", "galicia");
-        comunidades.put("Baleares", "baleares");
-        comunidades.put("Canarias", "canarias");
-        comunidades.put("La Rioja", "la_rioja");
-        comunidades.put("Melilla", "melilla");
-        comunidades.put("País Vasco", "pais_vasco");
-        comunidades.put("Murcia", "murcia");
+        comunidades.put("Aragón", 0);
+        comunidades.put("Canarias", 1);
+        comunidades.put("País Vasco", 2);
+        comunidades.put("Baleares", 3);
+        comunidades.put("Castilla y León", 4);
+        comunidades.put("Cataluña", 5);
+        comunidades.put("C. Valenciana", 6);
+        comunidades.put("Ceuta", 7);
+        comunidades.put("La Rioja", 8);
+        comunidades.put("Navarra", 9);
+        comunidades.put("Andalucía", 10);
+        comunidades.put("Castilla-La Mancha", 11);
+        comunidades.put("Murcia", 12);
+        comunidades.put("Cantabria", 13);
+        comunidades.put("Galicia", 14);
+        comunidades.put("Melilla", 15);
+        comunidades.put("Asturias", 16);
+        comunidades.put("Madrid", 17);
+        comunidades.put("Extremadura", 18);
     }
 
-    private void searchLocationData(View root) {
+    private void searchLocationData(int position) {
         DataFragment fr = new DataFragment();
-        TextView t = recyclerView.findViewById(R.id.nombre);
-        String id = String.valueOf(t.getText());
-        List<ComunidadDto> listDto = callApi(1, id);
-        Bundle datosAEnviar = new Bundle();
 
-        ComunidadFechaDto comDto = new ComunidadFechaDto();
-        comDto.listaFechas = callApi(2, id);
-        datosAEnviar.putParcelable("dtoFechas", comDto);
-        for (ComunidadDto dto : listDto) {
-            if (dto.id.equals(comunidades.get(id))) {
-                datosAEnviar.putParcelable("dto", dto);
-                break;
+        String id = "";
+
+        for (Map.Entry<String, Integer> entry : comunidades.entrySet()) {
+            String key = entry.getKey();
+            int value = entry.getValue();
+            if(position == value){
+                id = key;
             }
         }
 
+        if(id != ""){
+            List<ComunidadDto> listDto = callApi(1, id);
+            Bundle datosAEnviar = new Bundle();
 
-        fr.setArguments(datosAEnviar);
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container_main, fr)
-                .addToBackStack(null)
-                .commit();
+            ComunidadFechaDto comDto = new ComunidadFechaDto();
+            comDto.listaFechas = callApi(2, id);
+            datosAEnviar.putParcelable("dtoFechas", comDto);
+            for (ComunidadDto dto : listDto) {
+                if (dto.nombre.equals(id)) {
+                    datosAEnviar.putParcelable("dto", dto);
+                    break;
+                }
+            }
+
+
+            fr.setArguments(datosAEnviar);
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container_main, fr)
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 
 
