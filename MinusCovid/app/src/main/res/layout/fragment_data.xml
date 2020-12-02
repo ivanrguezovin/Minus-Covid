@@ -44,6 +44,7 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="364dp"
+                android:id="@+id/tabla"
                 android:stretchColumns="2">
 
                 <TableRow>
@@ -380,6 +381,22 @@
                         app:layout_constraintVertical_bias="0.502" />
                 </TableRow>
             </TableLayout>
+            <TextView
+                android:id="@+id/chart1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Infectados totales en los últimos 7 días"
+                android:textColor="@color/design_default_color_on_secondary"
+                app:layout_constraintBottom_toTopOf="@+id/lineChart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.039"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tabla"
+                app:layout_constraintVertical_bias="0.608" />
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/lineChart"
                 android:layout_width="match_parent"
@@ -388,6 +405,22 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"/>
+            <TextView
+                android:id="@+id/chart2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Fallecidos totales en los últimos 7 días"
+                android:textColor="@color/design_default_color_on_secondary"
+                app:layout_constraintBottom_toTopOf="@+id/barChart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.039"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lineChart"
+                app:layout_constraintVertical_bias="0.608" />
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/barChart"
                 android:layout_width="match_parent"
@@ -396,6 +429,22 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"/>
+            <TextView
+                android:id="@+id/chart3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Curados en los últimos 7 días"
+                android:textColor="@color/design_default_color_on_secondary"
+                app:layout_constraintBottom_toTopOf="@+id/barChart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.039"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/barChart2"
+                app:layout_constraintVertical_bias="0.608" />
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/barChart2"
                 android:layout_width="match_parent"
