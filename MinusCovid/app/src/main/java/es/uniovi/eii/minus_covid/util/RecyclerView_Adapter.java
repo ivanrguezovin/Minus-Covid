@@ -50,4 +50,9 @@ public class RecyclerView_Adapter extends RecyclerView.Adapter<View_Holder> {
     public int getItemCount() {
         return list.size();
     }
+
+    public void filterlist(List<ComunidadDto> filteredDtos){
+        this.list = filteredDtos;
+        notifyDataSetChanged();
+    }
 }

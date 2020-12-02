@@ -2,10 +2,13 @@ package es.uniovi.eii.minus_covid.ui.general;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,9 +37,11 @@ import es.uniovi.eii.minus_covid.util.RecyclerView_Adapter;
 
 public class GeneralFragment extends Fragment {
 
-    List<ComunidadDto> cds;
+    List<ComunidadDto> cds = generarComunidades();
     private HashMap<String, Integer> comunidades = new HashMap<>();
     RecyclerView recyclerView;
+    RecyclerView_Adapter adapter;
+    EditText search;
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -47,13 +52,31 @@ public class GeneralFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        List<ComunidadDto> cds = generarComunidades();
+        //List<ComunidadDto> cds = generarComunidades();
         generarHash();
 
         View root = inflater.inflate(R.layout.fragment_general, container, false);
-
+        search = root.findViewById(R.id.search);
         recyclerView = root.findViewById(R.id.recyclerView);
-        RecyclerView_Adapter adapter = new RecyclerView_Adapter(cds, getActivity().getApplication());
+        adapter = new RecyclerView_Adapter(cds, getActivity().getApplication());
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getActivity(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
@@ -70,6 +93,18 @@ public class GeneralFragment extends Fragment {
 
 
         return root;
+    }
+
+    private void filter(String s){
+        List<ComunidadDto> coms = new ArrayList<ComunidadDto>();
+
+        for(ComunidadDto c: cds){
+            if(c.nombre.toLowerCase().contains(s.toLowerCase())){
+                coms.add(c);
+            }
+        }
+
+        adapter.filterlist(coms);
     }
 
     private void generarHash() {
