@@ -44,7 +44,6 @@ public class RecyclerView_Adapter extends RecyclerView.Adapter<View_Holder> {
         holder.totalFallecidos.setText(list.get(position).total_fallecidos_acumulado);
         holder.nuevosCasos.setText(list.get(position).nuevos_casos);
         holder.nuevosFallecidos.setText(list.get(position).nuevos_fallecidos);
-
     }
 
     @Override
