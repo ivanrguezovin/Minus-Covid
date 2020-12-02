@@ -52,7 +52,6 @@ public class GeneralFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        //List<ComunidadDto> cds = generarComunidades();
         generarHash();
 
         View root = inflater.inflate(R.layout.fragment_general, container, false);
@@ -103,8 +102,23 @@ public class GeneralFragment extends Fragment {
                 coms.add(c);
             }
         }
-
+        actualizarHash(coms);
         adapter.filterlist(coms);
+    }
+
+    private void actualizarHash(List<ComunidadDto> coms){
+        int contador=0;
+        HashMap<String, Integer> cas =new HashMap<String, Integer>();
+        for(ComunidadDto c: coms){
+            for (Map.Entry<String, Integer> entry : comunidades.entrySet()) {
+                String key = entry.getKey();
+                if(c.nombre.equals(key)){
+                    cas.put(key, contador);
+                    contador++;
+                }
+            }
+        }
+        comunidades = cas;
     }
 
     private void generarHash() {
