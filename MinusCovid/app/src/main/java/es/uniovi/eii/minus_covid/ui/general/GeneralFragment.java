@@ -95,6 +95,7 @@ public class GeneralFragment extends Fragment {
     }
 
     private void filter(String s){
+        generarHash();
         List<ComunidadDto> coms = new ArrayList<ComunidadDto>();
 
         for(ComunidadDto c: cds){
