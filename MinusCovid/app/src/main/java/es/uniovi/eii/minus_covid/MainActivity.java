@@ -1,13 +1,9 @@
 package es.uniovi.eii.minus_covid;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Menu;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -22,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import es.uniovi.eii.minus_covid.ui.about.AboutFragment;
-import es.uniovi.eii.minus_covid.ui.ajustes.SettingsFragment;
 import es.uniovi.eii.minus_covid.ui.general.GeneralFragment;
 import es.uniovi.eii.minus_covid.ui.home.HomeFragment;
 import es.uniovi.eii.minus_covid.ui.mapa.MapFragment;
@@ -43,7 +38,7 @@ public class MainActivity extends AppCompatActivity{
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home,R.id.nav_general,
-                R.id.nav_map, R.id.nav_ajustes, R.id.nav_salir)
+                R.id.nav_map, R.id.nav_salir)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -71,8 +66,6 @@ public class MainActivity extends AppCompatActivity{
                                 })
                                 .setMessage("¿Deseas salir de la aplicación?").create();
                         dialogo.show();
-                    }else if (id == R.id.nav_ajustes) {
-                        fragmentManager.beginTransaction().replace(R.id.container_main, new SettingsFragment()).commit();
                     }else if (id == R.id.nav_about) {
                         fragmentManager.beginTransaction().replace(R.id.container_main, new AboutFragment()).commit();
                     }else if (id == R.id.nav_home) {
