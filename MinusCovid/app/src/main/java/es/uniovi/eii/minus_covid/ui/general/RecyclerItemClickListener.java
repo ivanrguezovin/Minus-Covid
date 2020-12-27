@@ -1,4 +1,4 @@
-package es.uniovi.eii.minus_covid.util;
+package es.uniovi.eii.minus_covid.ui.general;
 
 import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;

@@ -4,16 +4,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,8 +29,6 @@ import es.uniovi.eii.minus_covid.util.ApiConection;
 import es.uniovi.eii.minus_covid.util.ComunidadDto;
 import es.uniovi.eii.minus_covid.util.ComunidadFechaDto;
 import es.uniovi.eii.minus_covid.util.Parser;
-import es.uniovi.eii.minus_covid.util.RecyclerItemClickListener;
-import es.uniovi.eii.minus_covid.util.RecyclerView_Adapter;
 
 public class GeneralFragment extends Fragment {
 

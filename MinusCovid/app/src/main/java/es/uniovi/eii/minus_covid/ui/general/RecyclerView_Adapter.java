@@ -1,4 +1,4 @@
-package es.uniovi.eii.minus_covid.util;
+package es.uniovi.eii.minus_covid.ui.general;
 
 import android.app.Application;
 import android.content.Context;
@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 import es.uniovi.eii.minus_covid.R;
+import es.uniovi.eii.minus_covid.util.ComunidadDto;
 
 public class RecyclerView_Adapter extends RecyclerView.Adapter<View_Holder> {
 
