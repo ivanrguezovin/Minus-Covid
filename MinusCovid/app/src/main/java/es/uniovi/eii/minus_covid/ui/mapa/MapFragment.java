@@ -15,6 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.SupportMapFragment;
+
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -36,6 +40,9 @@ public class MapFragment extends Fragment {
     TextView selectCommunity;
     Spinner spinnerCommunity;
     Button buttonSearch;
+    MapView mapView;
+    GoogleMap map;
+
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -52,6 +59,8 @@ public class MapFragment extends Fragment {
         selectCommunity = root.findViewById(R.id.text_home);
         spinnerCommunity = root.findViewById(R.id.spinnerCommunity);
         buttonSearch = root.findViewById(R.id.bt_search);
+
+        mapView = (MapView) root.findViewById(R.id.mapView);
 
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,12 +122,12 @@ public class MapFragment extends Fragment {
 
     public List<ComunidadDto> callApi(int option, String com) {
         try {
-            if(option==1){
+            if (option == 1) {
                 JSONObject obj = new ApiConection(option, com).execute().get();
                 List<ComunidadDto> dto = Parser.parse(obj);
                 return dto;
             }
-            if(option==2){
+            if (option == 2) {
                 JSONObject obj = new ApiConection(option, com).execute().get();
                 List<ComunidadDto> dto = Parser.parserComunidadFechas(obj);
                 return dto;
