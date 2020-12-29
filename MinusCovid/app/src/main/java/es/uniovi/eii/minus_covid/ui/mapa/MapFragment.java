@@ -1,6 +1,11 @@
 package es.uniovi.eii.minus_covid.ui.mapa;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,12 +17,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONObject;
 
@@ -32,11 +42,13 @@ import es.uniovi.eii.minus_covid.util.ComunidadDto;
 import es.uniovi.eii.minus_covid.util.ComunidadFechaDto;
 import es.uniovi.eii.minus_covid.util.Parser;
 
-public class MapFragment extends Fragment {
+import static androidx.core.content.ContextCompat.checkSelfPermission;
+
+public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private HashMap<String, String> comunidades = new HashMap<>();
 
-
+    Context context;
     TextView selectCommunity;
     Spinner spinnerCommunity;
     Button buttonSearch;
@@ -60,8 +72,6 @@ public class MapFragment extends Fragment {
         spinnerCommunity = root.findViewById(R.id.spinnerCommunity);
         buttonSearch = root.findViewById(R.id.bt_search);
 
-        mapView = (MapView) root.findViewById(R.id.mapView);
-
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +80,7 @@ public class MapFragment extends Fragment {
         });
         return root;
     }
+
 
     private void generarHash() {
         comunidades.put("Andalucía", "andalucia");
@@ -138,4 +149,82 @@ public class MapFragment extends Fragment {
         }
         return null;
     }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        MapView mapView = view.findViewById(R.id.mapView);
+        if (mapView != null) {
+            mapView.onCreate(null);
+            mapView.onResume();
+            mapView.getMapAsync(this);
+        }
+
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        MapsInitializer.initialize(context);
+
+        map = googleMap;
+        LatLng latLng = new LatLng(43.3549307, -5.8512431);
+        googleMap.addMarker(new MarkerOptions().position(latLng).title("Prueba en EII").snippet("Prueba de  que puedo poner un marcador aquí"));
+        if (validaPermisos()) {
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+                dialog.setTitle("Aviso: Permisos Desactivados");
+                dialog.setMessage("Debe aceptar los permisos de localizacion para el correcto funcionamiento de la app. onMapReady");
+                dialog.create().show();
+                return;
+            }
+
+            googleMap.setMyLocationEnabled(true);
+            googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+        } else {
+            final AlertDialog.Builder alertOpciones = new AlertDialog.Builder(context);
+            alertOpciones.setTitle("No hay conexión a internet");
+            alertOpciones.setMessage("Conéctate a una red para poder acceder al mapa");
+            alertOpciones.setPositiveButton("Aceptar", (dialog, which) -> {
+            });
+            alertOpciones.create().show();
+        }
+    }
+
+    private boolean validaPermisos() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return true;
+        }
+        if ((checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) &&
+                (checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)) {
+            return true;
+        }
+        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
+        return false;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 100) {
+            boolean permisos;
+            if (grantResults.length == 2 && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                permisos = true;
+            } else {
+                permisos = false;
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+                dialog.setTitle("Aviso: Permisos Desactivados");
+                dialog.setMessage("Debe aceptar los permisos de localizacion para el correcto funcionamiento de la app.");
+                dialog.create().show();
+            }
+        }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
 }
