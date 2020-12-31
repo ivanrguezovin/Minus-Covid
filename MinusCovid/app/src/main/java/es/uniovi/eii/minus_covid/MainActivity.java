@@ -90,6 +90,8 @@ public class MainActivity extends AppCompatActivity{
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container_main, new HomeFragment()).commit();
         navigationView.setCheckedItem(R.id.nav_home);
+
+
     }
     /*
     private boolean hayInternet() {

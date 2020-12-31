@@ -177,18 +177,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 dialog.setMessage("Debe aceptar los permisos de localizacion para el correcto funcionamiento de la app. onMapReady");
                 dialog.create().show();
                 return;
-            }
-
-            googleMap.setMyLocationEnabled(true);
-            googleMap.getUiSettings().setMyLocationButtonEnabled(true);
-        } else {
-            final AlertDialog.Builder alertOpciones = new AlertDialog.Builder(context);
-            alertOpciones.setTitle("No hay conexión a internet");
-            alertOpciones.setMessage("Conéctate a una red para poder acceder al mapa");
-            alertOpciones.setPositiveButton("Aceptar", (dialog, which) -> {
-            });
-            alertOpciones.create().show();
-        }
+           }
+           googleMap.setMyLocationEnabled(true);
+           googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+      } //else {
+//            final AlertDialog.Builder alertOpciones = new AlertDialog.Builder(context);
+//            alertOpciones.setTitle("No hay conexión a internet");
+//            alertOpciones.setMessage("Conéctate a una red para poder acceder al mapa");
+//            alertOpciones.setPositiveButton("Aceptar", (dialog, which) -> {
+//            });
+//            alertOpciones.create().show();
+        //}
     }
 
     private boolean validaPermisos() {
@@ -199,7 +198,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 (checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)) {
             return true;
         }
-        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
+        //requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
         return false;
     }
 
