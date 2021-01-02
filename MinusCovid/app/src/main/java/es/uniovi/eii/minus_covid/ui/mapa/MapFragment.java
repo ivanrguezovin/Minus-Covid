@@ -193,9 +193,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         map = googleMap;
 
-        map.setMinZoomPreference(5.75f);
-        map.setMaxZoomPreference(5.75f);
-        map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(40.495082963, -3)));
+        map.setMinZoomPreference(5);
+        map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(35.495082963, -6.3)));
 
         googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
