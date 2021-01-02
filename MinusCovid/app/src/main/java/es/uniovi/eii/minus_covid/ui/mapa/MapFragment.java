@@ -21,6 +21,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.LocationSource;
 import com.google.android.gms.maps.MapView;
@@ -195,8 +197,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         map = googleMap;
 
-        map.setMinZoomPreference(5.8f);
-        map.setMaxZoomPreference(5.8f);
+        map.setMinZoomPreference(5.75f);
+        map.setMaxZoomPreference(5.75f);
+        map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(40.495082963, -3)));
 
         map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
