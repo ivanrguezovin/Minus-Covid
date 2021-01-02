@@ -37,6 +37,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import es.uniovi.eii.minus_covid.R;
@@ -50,7 +51,7 @@ import static androidx.core.content.ContextCompat.checkSelfPermission;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
-    private HashMap<String, String> comunidades = new HashMap<>();
+    private HashMap<String, ComunidadDto> comunidades = new HashMap<>();
 
     Context context;
     TextView selectCommunity;
@@ -78,7 +79,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchLocationData(comunidades.get(spinnerCommunity.getSelectedItem().toString()));
+                searchLocationData(comunidades.get(spinnerCommunity.getSelectedItem().toString()).id);
             }
         });
         return root;
@@ -86,25 +87,25 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
 
     private void generarHash() {
-        comunidades.put("Andalucía", "andalucia");
-        comunidades.put("Aragón", "aragon");
-        comunidades.put("Asturias", "asturias");
-        comunidades.put("Cantabria", "cantabria");
-        comunidades.put("Castilla-La Mancha", "castilla-la_mancha");
-        comunidades.put("Castilla y León", "castilla_y_leon");
-        comunidades.put("Cataluña", "cataluna");
-        comunidades.put("Ceuta", "ceuta");
-        comunidades.put("Comunidad de Madrid", "madrid");
-        comunidades.put("Comunidad Foral de Navarra", "navarra");
-        comunidades.put("Comunidad Valenciana", "c_valenciana");
-        comunidades.put("Extremadura", "extremadura");
-        comunidades.put("Galicia", "galicia");
-        comunidades.put("Islas Baleares", "baleares");
-        comunidades.put("Islas Canarias", "canarias");
-        comunidades.put("La Rioja", "la_rioja");
-        comunidades.put("Melilla", "melilla");
-        comunidades.put("País Vasco", "pais_vasco");
-        comunidades.put("Región de Murcia", "murcia");
+        comunidades.put("Andalucía", new ComunidadDto("andalucia", 37.463274379, -4.5756251361));
+        comunidades.put("Aragón", new ComunidadDto("aragon", 41.5195355493, -0.659846411976));
+        comunidades.put("Asturias", new ComunidadDto("asturias", 43.292357861, -5.99350932547));
+        comunidades.put("Cantabria", new ComunidadDto("cantabria", 43.1975195366, -4.03001213183));
+        comunidades.put("Castilla-La Mancha", new ComunidadDto("castilla-la_mancha", 39.5809896328, -3.00462777209));
+        comunidades.put("Castilla y León", new ComunidadDto("castilla_y_leon", 41.7543962127, -4.78188694026));
+        comunidades.put("Cataluña", new ComunidadDto("cataluna", 41.7985537834, 1.52905348544));
+        comunidades.put("Ceuta", new ComunidadDto("ceuta", 35.8934069863, -5.34342403891));
+        comunidades.put("Comunidad de Madrid", new ComunidadDto("madrid", 40.495082963, -3.71704006617));
+        comunidades.put("Comunidad Foral de Navarra", new ComunidadDto("navarra", 42.6672011468, -1.6461117688));
+        comunidades.put("Comunidad Valenciana", new ComunidadDto("c_valenciana", 39.4015584598, -0.554726732459));
+        comunidades.put("Extremadura", new ComunidadDto("extremadura", 39.1914992537, -6.15082693044));
+        comunidades.put("Galicia", new ComunidadDto("galicia", 42.7567966298, -7.91056344066));
+        comunidades.put("Islas Baleares", new ComunidadDto("baleares", 39.5751889864, 2.91229172079));
+        comunidades.put("Islas Canarias", new ComunidadDto("canarias", 28.339798593, -15.6720984172));
+        comunidades.put("La Rioja", new ComunidadDto("la_rioja", 42.2748733608, -2.51703983986));
+        comunidades.put("Melilla", new ComunidadDto("melilla", 35.2908279949, -2.95053552337));
+        comunidades.put("País Vasco", new ComunidadDto("pais_vasco", 43.0433630599, -2.61681792149));
+        comunidades.put("Región de Murcia", new ComunidadDto("murcia", 38.0023679133, -1.48575857531));
     }
 
 
@@ -168,19 +169,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         setUpMap(googleMap);
-//
-//        if (validaPermisos()) {
-//            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-//                    ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-//                dialog.setTitle("Aviso: Permisos Desactivados");
-//                dialog.setMessage("Debe aceptar los permisos de localizacion para el correcto funcionamiento de la app. onMapReady");
-//                dialog.create().show();
-//                return;
-//           }
-//           googleMap.setMyLocationEnabled(true);
-//           googleMap.getUiSettings().setMyLocationButtonEnabled(true);
-//      } //else {
+
+        if (validaPermisos()) {
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+                dialog.setTitle("Aviso: Permisos Desactivados");
+                dialog.setMessage("Debe aceptar los permisos de localizacion para el correcto funcionamiento de la app. onMapReady");
+                dialog.create().show();
+                return;
+           }
+           googleMap.setMyLocationEnabled(true);
+           googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+      } //else {
 //            final AlertDialog.Builder alertOpciones = new AlertDialog.Builder(context);
 //            alertOpciones.setTitle("No hay conexión a internet");
 //            alertOpciones.setMessage("Conéctate a una red para poder acceder al mapa");
@@ -202,14 +203,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                searchLocationData(comunidades.get(marker.getTitle()));
+                searchLocationData(comunidades.get(marker.getTitle()).id);
                 return false;
             }
         });
 
         LatLng latLng = new LatLng(43.3549307, -5.8512431);
-        googleMap.addMarker(new MarkerOptions().position(latLng).title("Asturias").snippet("Prueba de  que puedo poner un marcador aquí"));
+        marcadorAsturias = googleMap.addMarker(new MarkerOptions().position(latLng).title("Asturias").snippet("Prueba de  que puedo poner un marcador aquí"));
     }
+
 
     private boolean validaPermisos() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
