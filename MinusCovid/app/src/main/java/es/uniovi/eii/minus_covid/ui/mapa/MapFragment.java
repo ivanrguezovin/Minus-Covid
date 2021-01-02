@@ -27,6 +27,7 @@ import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONObject;
@@ -55,6 +56,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     MapView mapView;
     GoogleMap map;
 
+    private Marker marcadorAsturias;
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -72,12 +74,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         spinnerCommunity = root.findViewById(R.id.spinnerCommunity);
         buttonSearch = root.findViewById(R.id.bt_search);
 
-        buttonSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchLocationData();
-            }
-        });
+//        buttonSearch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                searchLocationData();
+//            }
+//        });
         return root;
     }
 
@@ -105,13 +107,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     }
 
 
-    private void searchLocationData() {
+    private void searchLocationData(String id) {
         DataFragment fr = new DataFragment();
         List<ComunidadDto> listDto = callApi(1, null);
 
         Bundle datosAEnviar = new Bundle();
 
-        String id = comunidades.get(spinnerCommunity.getSelectedItem().toString());
+//        String id = comunidades.get(spinnerCommunity.getSelectedItem().toString());
         ComunidadFechaDto comDto = new ComunidadFechaDto();
         comDto.listaFechas = callApi(2, id);
         System.out.println("--------------MAP FRAGMENT ----------" + comDto.listaFechas.get(0).toString());
@@ -164,11 +166,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        MapsInitializer.initialize(context);
+        setUpMap(googleMap);
 
-        map = googleMap;
-        LatLng latLng = new LatLng(43.3549307, -5.8512431);
-        googleMap.addMarker(new MarkerOptions().position(latLng).title("Prueba en EII").snippet("Prueba de  que puedo poner un marcador aquí"));
         if (validaPermisos()) {
             if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                     ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -188,6 +187,23 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 //            });
 //            alertOpciones.create().show();
         //}
+    }
+
+    private void setUpMap(GoogleMap googleMap) {
+        MapsInitializer.initialize(context);
+
+        map = googleMap;
+
+        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                searchLocationData(comunidades.get(marker.getTitle()));
+                return false;
+            }
+        });
+
+        LatLng latLng = new LatLng(43.3549307, -5.8512431);
+        marcadorAsturias = googleMap.addMarker(new MarkerOptions().position(latLng).title("Asturias").snippet("Prueba de  que puedo poner un marcador aquí"));
     }
 
     private boolean validaPermisos() {
