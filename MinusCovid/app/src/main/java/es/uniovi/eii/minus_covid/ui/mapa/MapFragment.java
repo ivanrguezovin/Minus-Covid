@@ -53,8 +53,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     Context context;
     TextView selectCommunity;
-    Spinner spinnerCommunity;
-    Button buttonSearch;
     MapView mapView;
     GoogleMap map;
 
@@ -72,15 +70,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         generarHash();
 
         selectCommunity = root.findViewById(R.id.text_home);
-        spinnerCommunity = root.findViewById(R.id.spinnerCommunity);
-        buttonSearch = root.findViewById(R.id.bt_search);
-
-        buttonSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchLocationData(comunidades.get(spinnerCommunity.getSelectedItem().toString()).id);
-            }
-        });
+//        spinnerCommunity = root.findViewById(R.id.spinnerCommunity);
+//        buttonSearch = root.findViewById(R.id.bt_search);
+//
+//        buttonSearch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                searchLocationData(comunidades.get(spinnerCommunity.getSelectedItem().toString()).id);
+//            }
+//        });
         return root;
     }
 
