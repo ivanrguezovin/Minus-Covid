@@ -74,12 +74,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         spinnerCommunity = root.findViewById(R.id.spinnerCommunity);
         buttonSearch = root.findViewById(R.id.bt_search);
 
-//        buttonSearch.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                searchLocationData();
-//            }
-//        });
+        buttonSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchLocationData(comunidades.get(spinnerCommunity.getSelectedItem().toString()));
+            }
+        });
         return root;
     }
 
