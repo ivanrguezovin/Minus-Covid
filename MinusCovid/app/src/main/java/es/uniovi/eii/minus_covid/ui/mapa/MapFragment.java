@@ -21,10 +21,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.LocationSource;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -59,6 +56,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     Button buttonSearch;
     MapView mapView;
     GoogleMap map;
+
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -178,10 +176,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 dialog.setMessage("Debe aceptar los permisos de localizacion para el correcto funcionamiento de la app. onMapReady");
                 dialog.create().show();
                 return;
-           }
-           googleMap.setMyLocationEnabled(true);
-           googleMap.getUiSettings().setMyLocationButtonEnabled(true);
-      } //else {
+            }
+            googleMap.setMyLocationEnabled(true);
+            googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+        } //else {
 //            final AlertDialog.Builder alertOpciones = new AlertDialog.Builder(context);
 //            alertOpciones.setTitle("No hay conexión a internet");
 //            alertOpciones.setMessage("Conéctate a una red para poder acceder al mapa");
@@ -196,11 +194,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         map = googleMap;
 
-        map.setMinZoomPreference(5.75f);
-        map.setMaxZoomPreference(5.75f);
-        map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(40.495082963, -3)));
-
-        map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 searchLocationData(comunidades.get(marker.getTitle()).id);
@@ -208,8 +202,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-        LatLng latLng = new LatLng(43.3549307, -5.8512431);
-        googleMap.addMarker(new MarkerOptions().position(latLng).title("Asturias").snippet("Prueba de  que puedo poner un marcador aquí"));
+        for (Map.Entry<String, ComunidadDto> c: comunidades.entrySet()) {
+            String clave = c.getKey();
+            ComunidadDto com = c.getValue();
+            LatLng latLng = new LatLng(com.lat, com.lng);
+            googleMap.addMarker(new MarkerOptions().position(latLng).title(clave));
+        }
     }
 
 
