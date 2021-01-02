@@ -7,6 +7,8 @@ public class ComunidadDto implements Parcelable {
 
     public String nombre;
     public String id;
+    public double lat;
+    public double lng;
 
     //totales
     public String total_casos_acumulado; //today_confirmed
@@ -44,6 +46,12 @@ public class ComunidadDto implements Parcelable {
         this.nuevos_curados = in.readString();
         this.nuevos_fallecidos = in.readString();
         this.nuevos_uci = in.readString();
+    }
+
+    public ComunidadDto(String id, double lat, double longi){
+        this.id=id;
+        this.lat=lat;
+        this.lng=longi;
     }
 
     public ComunidadDto(String nombre, String total_casos_acumulado, String total_curados_acumulado, String total_infectados_acumulado,
