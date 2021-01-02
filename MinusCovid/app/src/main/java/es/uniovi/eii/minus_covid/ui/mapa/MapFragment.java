@@ -22,6 +22,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.LocationSource;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -167,19 +168,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         setUpMap(googleMap);
-
-        if (validaPermisos()) {
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                    ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-                dialog.setTitle("Aviso: Permisos Desactivados");
-                dialog.setMessage("Debe aceptar los permisos de localizacion para el correcto funcionamiento de la app. onMapReady");
-                dialog.create().show();
-                return;
-           }
-           googleMap.setMyLocationEnabled(true);
-           googleMap.getUiSettings().setMyLocationButtonEnabled(true);
-      } //else {
+//
+//        if (validaPermisos()) {
+//            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+//                    ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+//                dialog.setTitle("Aviso: Permisos Desactivados");
+//                dialog.setMessage("Debe aceptar los permisos de localizacion para el correcto funcionamiento de la app. onMapReady");
+//                dialog.create().show();
+//                return;
+//           }
+//           googleMap.setMyLocationEnabled(true);
+//           googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+//      } //else {
 //            final AlertDialog.Builder alertOpciones = new AlertDialog.Builder(context);
 //            alertOpciones.setTitle("No hay conexión a internet");
 //            alertOpciones.setMessage("Conéctate a una red para poder acceder al mapa");
@@ -194,7 +195,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         map = googleMap;
 
-        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+        map.setMinZoomPreference(5.8f);
+        map.setMaxZoomPreference(5.8f);
+
+        map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 searchLocationData(comunidades.get(marker.getTitle()));
