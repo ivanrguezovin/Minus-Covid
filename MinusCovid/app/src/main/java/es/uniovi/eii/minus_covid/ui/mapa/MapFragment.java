@@ -209,7 +209,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         });
 
         LatLng latLng = new LatLng(43.3549307, -5.8512431);
-        marcadorAsturias = googleMap.addMarker(new MarkerOptions().position(latLng).title("Asturias").snippet("Prueba de  que puedo poner un marcador aquí"));
+        googleMap.addMarker(new MarkerOptions().position(latLng).title("Asturias").snippet("Prueba de  que puedo poner un marcador aquí"));
     }
 
 
