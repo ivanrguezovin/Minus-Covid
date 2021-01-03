@@ -46,11 +46,8 @@ public class ApiConection extends AsyncTask<String, Integer, JSONObject> {
                     break;
                 case 2:
                     stringUrl = "https://api.covid19tracking.narrativa.com/api/country/spain/region/" + region + "?date_from=" + formateDateLastWeek + "&date_to=" + formatedDate;
-                    System.out.println(stringUrl);
                     break;
             }
-
-            System.out.println(stringUrl);
 
             URL url = new URL(stringUrl);
 
@@ -83,21 +80,6 @@ public class ApiConection extends AsyncTask<String, Integer, JSONObject> {
                 // Get the required object from the above created object
 
                 obj = (JSONObject) data_obj.get("dates");
-                //obj = (JSONObject) obj.get(formatedDate);
-                /*
-                 * // Get the required data using its key
-                 * System.out.println(obj.get("TotalRecovered"));
-                 *
-                 * JSONArray arr = (JSONArray) data_obj.get("Countries");
-                 *
-                 * for (int i = 0; i < arr.size(); i++) {
-                 *
-                 * JSONObject new_obj = (JSONObject) arr.get(i);
-                 *
-                 * if (new_obj.get("Slug").equals("albania")) {
-                 * System.out.println("Total Recovered: " + new_obj.get("TotalRecovered"));
-                 * break; } }
-                 */
             }
         } catch (Exception e) {
             e.printStackTrace();

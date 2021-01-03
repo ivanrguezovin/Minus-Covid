@@ -46,7 +46,6 @@ public class Parser {
             }
         } catch (JSONException e) {
             e.printStackTrace();
-            System.out.println("PATATAAA");
         }
         return dtoList;
     }
@@ -63,7 +62,6 @@ public class Parser {
             String formateDateLastWeek = "";
             for (int j = 0; j < 7; j++) {
                 formateDateLastWeek = sdf.format(dateBefore7Days);
-                System.out.println("LA FECHA ES ESTA --------------------->" + formateDateLastWeek);
 
                 data_obj = (JSONObject) data_obj.get(formateDateLastWeek);
                 data_obj = (JSONObject) data_obj.get("countries");
@@ -85,7 +83,6 @@ public class Parser {
                     dto.nuevos_fallecidos = jsonarr.getJSONObject(i).getString("today_new_deaths");
                     dto.nuevos_uci = jsonarr.getJSONObject(i).getString("today_new_intensive_care");
                     dtoList.add(dto);
-                    System.out.println(dto.toString());
                 }
                 cal.setTime(dateBefore7Days);
                 cal.add(Calendar.DATE, 1);
@@ -95,7 +92,6 @@ public class Parser {
 
         } catch (JSONException e) {
             e.printStackTrace();
-            System.out.println("Rompe en el parser rango de fecha");
         }
         return dtoList;
     }

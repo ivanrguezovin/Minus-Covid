@@ -35,8 +35,7 @@ public class MainActivity extends AppCompatActivity{
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home,R.id.nav_general,
                 R.id.nav_map, R.id.nav_salir)
                 .setDrawerLayout(drawer)
@@ -86,25 +85,6 @@ public class MainActivity extends AppCompatActivity{
 
 
     }
-    /*
-    private boolean hayInternet() {
-        try {
-            Process process = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.es");
-            int valor = process.waitFor();
-            return (valor == 0);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    private boolean hayConexionAInternet() {
-        ConnectivityManager connectivityManager = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo actNetInfo = connectivityManager.getActiveNetworkInfo();
-        return (actNetInfo != null && actNetInfo.isConnected());
-    }
-    */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

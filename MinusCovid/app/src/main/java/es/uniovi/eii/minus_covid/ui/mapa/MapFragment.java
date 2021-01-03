@@ -52,7 +52,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private HashMap<String, ComunidadDto> comunidades = new HashMap<>();
 
     Context context;
-    TextView selectCommunity;
     MapView mapView;
     GoogleMap map;
 
@@ -69,16 +68,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         generarHash();
 
-        selectCommunity = root.findViewById(R.id.text_home);
-//        spinnerCommunity = root.findViewById(R.id.spinnerCommunity);
-//        buttonSearch = root.findViewById(R.id.bt_search);
-//
-//        buttonSearch.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                searchLocationData(comunidades.get(spinnerCommunity.getSelectedItem().toString()).id);
-//            }
-//        });
         return root;
     }
 
@@ -111,11 +100,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         List<ComunidadDto> listDto = callApi(1, null);
 
         Bundle datosAEnviar = new Bundle();
-
-//        String id = comunidades.get(spinnerCommunity.getSelectedItem().toString());
         ComunidadFechaDto comDto = new ComunidadFechaDto();
         comDto.listaFechas = callApi(2, id);
-        System.out.println("--------------MAP FRAGMENT ----------" + comDto.listaFechas.get(0).toString());
         datosAEnviar.putParcelable("dtoFechas", comDto);
         for (ComunidadDto dto : listDto) {
             if (dto.id.equals(id)) {
@@ -178,14 +164,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
             googleMap.setMyLocationEnabled(true);
             googleMap.getUiSettings().setMyLocationButtonEnabled(true);
-        } //else {
-//            final AlertDialog.Builder alertOpciones = new AlertDialog.Builder(context);
-//            alertOpciones.setTitle("No hay conexión a internet");
-//            alertOpciones.setMessage("Conéctate a una red para poder acceder al mapa");
-//            alertOpciones.setPositiveButton("Aceptar", (dialog, which) -> {
-//            });
-//            alertOpciones.create().show();
-        //}
+        }
     }
 
     private void setUpMap(GoogleMap googleMap) {
@@ -199,7 +178,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                searchLocationData(comunidades.get(marker.getTitle()).id);
+                try{
+                    searchLocationData(comunidades.get(marker.getTitle()).id);
+                }catch(Exception e){
+
+                }
                 return false;
             }
         });
@@ -221,7 +204,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 (checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)) {
             return true;
         }
-        //requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
         return false;
     }
 

@@ -142,29 +142,37 @@ public class DataFragment extends Fragment {
         // Creamos un set de datos
         ArrayList<Entry> lineEntries = new ArrayList<Entry>();
         for (int i = 0; i<7; i++){
-
-            lineEntries.add(new Entry((float) i,Float.parseFloat(dtoFechas.listaFechas.get(i).total_infectados_acumulado)));
+            try{
+                lineEntries.add(new Entry((float) i,Float.parseFloat(dtoFechas.listaFechas.get(i).total_infectados_acumulado)));
+            }catch(NumberFormatException e){
+                lineEntries.add(new Entry((float) i,0));
+            }
         }
 
         // Creamos un set de datos
         ArrayList<BarEntry> barEntries = new ArrayList<BarEntry>();
 
         for (int i = 0; i<7; i++){
-
-            //Float.parseFloat(dtoFechas.listaFechas.get(i).total_infectados_acumulado))
-            barEntries.add(new BarEntry((float) i, Float.parseFloat(dtoFechas.listaFechas.get(i).total_fallecidos_acumulado)));
-
+            try{
+                barEntries.add(new BarEntry((float) i, Float.parseFloat(dtoFechas.listaFechas.get(i).total_fallecidos_acumulado)));
+            }catch(NumberFormatException e){
+                barEntries.add(new BarEntry((float) i, 0));
+            }
         }
 
         ArrayList<BarEntry> barEntriesC = new ArrayList<BarEntry>();
         for (int i = 0; i<7; i++){
-            barEntriesC.add(new BarEntry((float) i, Float.parseFloat(dtoFechas.listaFechas.get(i).nuevos_curados)));
+            try{
+                barEntriesC.add(new BarEntry((float) i, Float.parseFloat(dtoFechas.listaFechas.get(i).nuevos_casos)));
+            }catch(NumberFormatException e){
+                barEntriesC.add(new BarEntry((float) i, 0));
+            }
         }
 
         // Unimos los datos al data set
-        lineDataSetInfectados = new LineDataSet(lineEntries, "Infectados en los últimos  7 días");
-        barDataSetFallecidos = new BarDataSet(barEntries, "Fallecidos en los últimos  7 días");
-        barDataSetCurados = new BarDataSet(barEntriesC, "Curados en los últimos  7 días");
+        lineDataSetInfectados = new LineDataSet(lineEntries, "Infectados");
+        barDataSetFallecidos = new BarDataSet(barEntries, "Fallecidos");
+        barDataSetCurados = new BarDataSet(barEntriesC, "Curados");
 
         // Asociamos al gráfico
 

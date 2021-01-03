@@ -47,13 +47,12 @@ public class GeneralFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        generarHash();
 
         View root = inflater.inflate(R.layout.fragment_general, container, false);
         search = root.findViewById(R.id.search);
         recyclerView = root.findViewById(R.id.recyclerView);
         adapter = new RecyclerView_Adapter(cds, getActivity().getApplication());
-
+        filter("");
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
