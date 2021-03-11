@@ -1,2 +1,2 @@
 # sdm_minus-covid
-Proyecto final de la asignatura Software para Dispositivos Móviles
+Proyecto basado en una aplicación que proporciones información acerca de la situación en las distintas comunidades españolas sobre el COVID-19.
